@@ -1003,11 +1003,8 @@ PRIVATE void
 t_mft(struct t_dirs *d)
 {
 	DIR *dirp;
-#ifdef USE_DIRENT
+
 	struct dirent *dp;
-#else
-	struct direct *dp;
-#endif
 	struct t_tree **t;
 
 	if ((dirp = opendir(d->name)) == NULL) {

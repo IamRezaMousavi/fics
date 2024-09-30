@@ -1150,11 +1150,8 @@ com_stored(int p, param_list param)
 	DIR		*dirp;
 	char		 dname[MAX_FILENAME_SIZE];
 	int		 p1, connected;
-#ifdef USE_DIRENT
 	struct dirent	*dp;
-#else
-	struct direct	*dp;
-#endif
+
 
 	if (param[0].type == TYPE_WORD) {
 		if (!FindPlayer(p, param[0].val.word, &p1, &connected))
