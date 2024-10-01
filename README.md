@@ -12,6 +12,10 @@ The main goal of the fork is to modernize the codebase, improve the
 security and fix bugs. New features, for example, other chess variants
 will be added in a later stage.
 
+## Build
+
+To build, you need to install `libbsd-dev` and run `make`
+
 ## Installation ##
 
 Begin the installation with creating a new user, dedicated for running

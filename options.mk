@@ -1,9 +1,9 @@
 # options.mk
 
 # Locations of the data, players and games directories.
-FICS_HOME ?= /home/chess/config
+FICS_HOME ?= .
 
-PREFIX ?= /home/chess
+PREFIX ?= .
 
 CC ?= cc
 CFLAGS = -O2 -Wall -g -pipe -std=c11 \
