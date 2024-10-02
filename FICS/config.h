@@ -78,4 +78,12 @@
  */
 #define REGMAIL           "maxxe@rpblc.net"
 
+/*
+ * Default installation path
+ * it'd be nicer if we didnt hardcoded this
+ */
+#define PREFIX	"."
+
+
+#include "ficspaths.h"
 #endif    /* _CONFIG_H */
