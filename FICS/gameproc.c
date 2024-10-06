@@ -1570,11 +1570,8 @@ com_boards(int p, param_list param)
 	DIR		*dirp;
 	char		*category = NULL;
 	char		 dname[MAX_FILENAME_SIZE] = { '\0' };
-#ifdef USE_DIRENT
 	struct dirent	*dp;
-#else
-	struct direct	*dp;
-#endif
+
 
 	if (param[0].type == TYPE_WORD)
 		category = param[0].val.word;

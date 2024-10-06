@@ -636,11 +636,7 @@ rating_recalc(void)
 	char		 dname[MAX_FILENAME_SIZE];
 	int		 c;
 	int		 p1;
-#if USE_DIRENT
 	struct dirent	*dp;
-#else
-	struct direct	*dp;
-#endif
 	time_t		 t = time(NULL);
 
 	fprintf(stderr, "FICS: Recalculating ratings at %s\n", strltime(&t));

@@ -1350,11 +1350,8 @@ showstored(int p)
 	int		 c = 0, p1;
 	multicol	*m = multicol_start(50);	// Limit to 50
 							// (should be enough)
-#ifdef USE_DIRENT
 	struct dirent	*dp;
-#else
-	struct direct	*dp;
-#endif
+
 
 	snprintf(dname, sizeof dname, "%s/%c", adj_dir, parray[p].login[0]);
 
