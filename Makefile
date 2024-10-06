@@ -2,23 +2,25 @@
 # SPDX-FileCopyrightText: 2023 Markus Uhlin <maxxe@rpblc.net>
 # SPDX-License-Identifier: ISC
 
-include options.mk
+# common rules
+include common.mk
 
 LDLIBS =
 AP_LDLIBS =
 MR_LDLIBS =
 
-# common vars
-include vars.mk
-
 all: $(TGTS)
 
 include FICS/build.mk
 
-# common rules
-include common.mk
 
-.PHONY: clean install-init install
+.PHONY: clean $(TGTS)
 
-include $(TARGETS_DIR)clean.mk
-include $(TARGETS_DIR)install.mk
+clean:
+	$(E) "  CLEAN"
+	$(RM) $(INCLUDE_DIR)ficspaths.h
+	$(RM) $(OBJS)
+	$(RM) $(AP_OBJS)
+	$(RM) $(MR_OBJS)
+	$(RM) $(TGTS)
+
