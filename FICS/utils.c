@@ -165,8 +165,6 @@ mail_string_to_address(char *addr, char *subj, char *str)
 
 #ifdef SENDMAILPROG
 	snprintf(com, sizeof com, "%s\n", SENDMAILPROG);
-#else
-	snprintf(com, sizeof com, "%s -s \"%s\" %s", MAILPROGRAM, subj, addr);
 #endif
 
 	fp = popen(com, "w");
@@ -209,9 +207,6 @@ mail_file_to_address(char *addr, char *subj, char *fname)
 
 #ifdef SENDMAILPROG
 	snprintf(com, sizeof com, "%s\n", SENDMAILPROG);
-#else
-	snprintf(com, sizeof com, "%s -s \"%s\" %s < %s&", MAILPROGRAM, subj,
-	    addr, fname);
 #endif
 	if ((fp1 = popen(com, "w")) == NULL)
 		return -1;

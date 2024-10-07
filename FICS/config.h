@@ -49,14 +49,15 @@
 #define LANG_DEFAULT      LANG_ENGLISH
 
 /*
+ * Default installation path
+ * it'd be nicer if we didnt hardcoded this
+ */
+#define PREFIX	"."
+
+/*
  * Locations of the data, players and games directories.
  */
 #include "ficspaths.h"
-
-/*
- * Where the standard ucb mail program is
- */
-//#define MAILPROGRAM "/usr/bin/mail"
 
 /*
  * 'SENDMAILPROG' is a faster and more reliable means of sending mail
@@ -77,13 +78,4 @@
  * Registration mail address
  */
 #define REGMAIL           "maxxe@rpblc.net"
-
-/*
- * Default installation path
- * it'd be nicer if we didnt hardcoded this
- */
-#define PREFIX	"."
-
-
-#include "ficspaths.h"
 #endif    /* _CONFIG_H */
