@@ -2,19 +2,20 @@
 # SPDX-FileCopyrightText: 2023 Markus Uhlin <maxxe@rpblc.net>
 # SPDX-License-Identifier: ISC
 
-include options.mk
-
-# common vars
-include vars.mk
+# common rules
+include common.mk
 
 all: $(TGTS)
 
 include FICS/build.mk
 
-# common rules
-include common.mk
+.PHONY: clean $(TGTS)
 
-.PHONY: clean install-init install
+clean:
+	$(E) "  CLEAN"
+	$(RM) $(INCLUDE_DIR)ficspaths.h
+	$(RM) $(OBJS)
+	$(RM) $(AP_OBJS)
+	$(RM) $(MR_OBJS)
+	$(RM) $(TGTS)
 
-include $(TARGETS_DIR)clean.mk
-include $(TARGETS_DIR)install.mk
