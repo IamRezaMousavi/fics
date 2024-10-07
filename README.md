@@ -12,7 +12,7 @@ The main goal of the fork is to modernize the codebase, improve the
 security and fix bugs. New features, for example, other chess variants
 will be added in a later stage.
 
-## Build
+## Build ##
 
 To build, you need to install `libbsd-dev` and run `make`
 
@@ -27,25 +27,25 @@ When the user has been created login to its account and clone the
 [Git](https://git-scm.com)
 repository:
 
-    $ su -l chess
-    $ mkdir git
-    $ cd git
-    $ git clone https://github.com/uhlin/fics.git
-    $ cd fics
+    su -l chess
+    mkdir git
+    cd git
+    git clone https://github.com/uhlin/fics.git
+    cd fics
 
 Edit `FICS/config.h` with a text editor and save the file.
 
-    $ emacs FICS/config.h
+    emacs FICS/config.h
 
 From the top-level directory of the cloned Git repository begin the
 building by running make.
 
-    $ make
+    make
 
 If the build was successful it's time to install the chess server by
 running `make install`.
 
-    $ make install
+    make install
 
 Done!
 
@@ -59,7 +59,7 @@ followed the installation steps above.
 
 To install the manual pages, type:
 
-    $ sudo make install-manpages
+    sudo make install-manpages
 
 Replace `sudo` with `doas` if you are running OpenBSD.
 The destination will always be prefixed to `/usr/local`, i.e. system wide,
@@ -83,11 +83,11 @@ is installed on your computer.
 
 To detach the screen, type:
 
-    $ (CTRL+a+d)
+    (CTRL+a+d)
 
 And to resume, use:
 
-    $ screen -r
+    screen -r
 
 The same is achievable with the terminal multiplexer `tmux` in case
 you prefer that over GNU Screen.
@@ -106,7 +106,7 @@ on
 Starting from version `rpblc-1.4.3` you can run the server in the
 background by typing:
 
-    $ fics -d
+    fics -d
 
 ### Run as a cron job ###
 
@@ -115,7 +115,7 @@ to be run as a cron job for the dedicated chess user.
 
 Edit the crontab by typing:
 
-    $ crontab -e
+    crontab -e
 
 And add the following line:
 
@@ -125,7 +125,7 @@ Save the file and exit.
 
 To display the current crontab, type:
 
-    $ crontab -l
+    crontab -l
 
 ## Creating registered players ##
 
@@ -136,14 +136,14 @@ As root, do the following:
 
 Log out:
 
-    $ (CTRL+d)
+    (CTRL+d)
 
 The `fics_addplayer` program is located in `/home/chess/bin`,
 along with `makerank`.
 The dir `/home/chess/bin` should in general be automatically added to
 the PATH for the chess user.
 
-    $ man 1 fics_addplayer
-    $ man 1 makerank
+    man 1 fics_addplayer
+    man 1 makerank
 
 Happy gaming!
