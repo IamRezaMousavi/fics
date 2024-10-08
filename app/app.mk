@@ -5,9 +5,12 @@ CFLAGS  := -I../../include
 CFLAGS  += -g        # for debugging
 CFLAGS  += -O0       # optimization for debugging
 CFLAGS	+= -Wall -Wextra
-LDFLAGS := -lcrypt
-LDFLAGS += -lbsd
-LDFLAGS += -lm
+LDFLAGS := -lm
+
+ifeq ($(UNAME_S),Linux)
+	LDFLAGS += -lcrypt
+	LDFLAGS += -lbsd
+endif
 
 BIN_DIR := ../../bin
 
