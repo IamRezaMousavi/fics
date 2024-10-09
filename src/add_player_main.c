@@ -25,7 +25,7 @@
    Markus Uhlin			23/12/28	Switched to arc4random_uniform()
    Markus Uhlin			24/01/01	Size-bounded copying
    Markus Uhlin			24/04/01	Fixed empty hostname
-   Markus Uhlin			24/04/04	Added usage of explicit_bzero()
+   Markus Uhlin			24/04/04	Added add_player_usage of explicit_bzero()
    Markus Uhlin			24/05/25	Added command-line option 'a'
 */
 
@@ -71,15 +71,15 @@ add_handle_to_list(const char *handle)
 }
 
 PRIVATE __dead void
-usage(char *progname)
+add_player_usage(char *progname)
 {
-	fprintf(stderr, "Usage: %s [-a] <UserName> <FullName> <EmailAddress>\n",
+	fprintf(stderr, "add-player usage: %s [-a] <UserName> <FullName> <EmailAddress>\n",
 	    progname);
 	exit(1);
 }
 
 PUBLIC int
-main(int argc, char *argv[])
+add_player_main(int argc, char *argv[])
 {
 	char	 password[PASSLEN + 1];
 	char	 salt[FICS_SALT_SIZE];
@@ -96,7 +96,7 @@ main(int argc, char *argv[])
 			case '?':
 			case 'h':
 			default:
-				usage(argv[0]);
+				add_player_usage(argv[0]);
 				break;
 			}
 		} else {
@@ -107,12 +107,12 @@ main(int argc, char *argv[])
 			else if (email == NULL)
 				email = argv[i];
 			else
-				usage(argv[0]);
+				add_player_usage(argv[0]);
 		}
 	}
 
 	if (funame == NULL || fname == NULL || email == NULL)
-		usage(argv[0]);
+		add_player_usage(argv[0]);
 
 	/* Add the player here */
 	if (strlen(funame) >= MAX_LOGIN_NAME)

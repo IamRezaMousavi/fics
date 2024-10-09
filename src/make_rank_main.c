@@ -279,11 +279,16 @@ makerank(void)
 	}
 }
 
+void make_rank_usage(char const* app)
+{
+	fprintf(stderr, "make-rank usage: %s.\n", app);
+}
+
 int
-main(int argc, char **argv)
+make_rank_main(int argc, char **argv)
 {
 	if (argc > 1) {
-		fprintf(stderr, "usage: %s.\n", argv[0]);
+		make_rank_usage(argv[0]);
 		return EXIT_FAILURE;
 	}
 
