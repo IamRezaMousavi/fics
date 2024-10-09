@@ -1,4 +1,3 @@
-*.o
-fics
+bin
 fics_addplayer
 makerank

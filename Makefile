@@ -1,26 +1,38 @@
-# Makefile for use with BSD make
-# SPDX-FileCopyrightText: 2023 Markus Uhlin <maxxe@rpblc.net>
-# SPDX-License-Identifier: ISC
+APP := fics-server
 
-# common rules
-include common.mk
+CC      := gcc
+SRC_FMT := c
+CFLAGS  := -Iinclude 
+CFLAGS  += -g        # for debugging
+CFLAGS  += -O0       # optimization for debugging
+CFLAGS	+= -Wall -Wextra
+LDFLAGS := -lm
+# for linux
+LDFLAGS += -lcrypt
+LDFLAGS += -lbsd
+# for dsb comment tow above lines
 
-LDLIBS =
-AP_LDLIBS =
-MR_LDLIBS =
+BIN_DIR := bin
 
-all: $(TGTS)
+SRC_DIRS := src
 
-include FICS/build.mk
+SRCS := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.$(SRC_FMT)))
+OBJS := $(patsubst %.$(SRC_FMT),$(BIN_DIR)/%.o,$(SRCS))
+DEPS := $(patsubst %.$(SRC_FMT),$(BIN_DIR)/%.d,$(SRCS))
 
+all: $(BIN_DIR)/$(APP)
 
-.PHONY: clean $(TGTS)
+$(BIN_DIR)/$(APP): $(OBJS)
+	@$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
+$(BIN_DIR)/%.o: %.$(SRC_FMT)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -MMD -MP -MF $(patsubst %.o,%.d,$@) -MT $@ -c $< -o $@
+
+-include $(DEPS)
+
+install: bin/$(APP)
+	@install -m 755 bin/$(APP) /usr/local/bin
 
 clean:
-	$(E) "  CLEAN"
-	$(RM) $(INCLUDE_DIR)ficspaths.h
-	$(RM) $(OBJS)
-	$(RM) $(AP_OBJS)
-	$(RM) $(MR_OBJS)
-	$(RM) $(TGTS)
-
+	@rm -rf bin $(APP)

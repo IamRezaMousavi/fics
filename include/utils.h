@@ -31,6 +31,7 @@
 #define _UTILS_H
 
 #include <stdio.h>
+#include <time.h>
 
 #include "common.h" /* PRINTFLIKE() */
 #include "multicol.h"

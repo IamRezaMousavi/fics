@@ -3,9 +3,11 @@
  * 25 Dec 2023.
  */
 
-#include <cstdio>
-#include <cstring>
-#include <random>
+#include <string.h>
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 #include "fics_getsalt.h"
 
@@ -24,12 +26,18 @@ fics_getsalt(void)
 		init_done = true;
 	}
 
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<size_t> dist(0, strlen(legal_index) - 1);
+	srand(time(NULL));
 
+	/* CPP */
+	// std::random_device rd;
+	// std::mt19937 gen(rd());
+	// std::uniform_int_distribution<size_t> dist(0, strlen(legal_index) - 1);
+
+	size_t legal_index_len = strlen(legal_index);
 	for (size_t i = 7; i < sizeof salt; i++)
-		salt[i] = legal_index[dist(gen)];
+	{
+		salt[i] = legal_index[rand() % legal_index_len];
+	}
 	salt[sizeof salt - 1] = '\0';
 	return (&salt[0]);
 }

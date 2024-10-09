@@ -1,20 +1,112 @@
-abort		examine		mailmess	quit		stored
-accept		finger		mailmoves	rank		style
-addlist		flag		mailoldmoves	refresh		sublist
-adjourn		flip		mailsource	resign		switch
-alias		forward		mailstored	revert		takeback
-allobservers	games		match		say		tell
-assess		goboard		messages	set		time
-backward	gonum		mexamine	shout		unalias
-bell		handles		moretime	simabort	uncensor
-best		hbest		moves		simadjourn	unexamine
-boards		help		news		simallabort	unobserve
-censor		history		next		simalladjourn	unpause
-channel		hrank		notify		simgames	uptime
-clearmessages	inchannel	observe		simmatch	variables
-cls_info	index		oldmoves	simnext		whisper
-cshout		it		open		simopen		who
-date		kibitz		password	simpass		withdraw
-decline		llogons		pause		smoves		xtell
-draw		logons		pending		sposition	znotify
-eco		mailhelp	promote		statistics
+abort
+accept
+addlist
+adjourn
+alias
+allobservers
+assess
+backward
+bell
+best
+boards
+clearmessages
+convert_bcf
+convert_elo
+convert_uscf
+cshout
+date
+decline
+draw
+eco
+examine
+finger
+flag
+flip
+forward
+games
+getpi
+goboard
+gonum
+handles
+hbest
+help
+history
+hrank
+inchannel
+index
+info
+iset
+it
+journal
+jsave
+kibitz
+limits
+llogons
+logons
+mailhelp
+mailmess
+mailmoves
+mailoldmoves
+mailsource
+mailstored
+match
+messages
+mexamine
+moretime
+moves
+news
+next
+observe
+oldmoves
+open
+partner
+password
+pause
+pending
+prefresh
+promote
+ptell
+qtell
+quit
+rank
+refresh
+resign
+revert
+say
+servers
+set
+shout
+showlist
+simabort
+simadjourn
+simallabort
+simalladjourn
+simgames
+simmatch
+simnext
+simopen
+simpass
+simprev
+smoves
+sposition
+statistics
+stored
+style
+sublist
+switch
+takeback
+tell
+time
+unalias
+unexamine
+unobserve
+unpause
+uptime
+uscf
+variables
+whenshut
+whisper
+who
+withdraw
+xtell
+znotify

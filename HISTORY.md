@@ -1,3 +1,4 @@
+# HISTORY
 
 Versions up to 1.2.16 and between 1.2.23 and 1.3.2 are approximate.
 Information on changes may not be exact or complete.
@@ -26,7 +27,7 @@ Information on changes may not be exact or complete.
          fics_addplayer new account message modernized to include
          brief instructions on how to connect to the server and
          and warn about the use of anauthorzied duplicate accounts.
-	 both adminproc.c and fics_addplayer modified.
+  both adminproc.c and fics_addplayer modified.
 
 1.5.1    Fixes in journal commands, some bughouse bugs.
 
@@ -62,8 +63,7 @@ Information on changes may not be exact or complete.
          PGN format now supported for email of game scores.
          Direct sendmail support provided with the SENDMAILPROG
          definition in config.h, which overrides any MAILPROGRAM
-         definition.  Provides for more reliable and efficient operation
-	 under heavy load.
+         definition.  Provides for more reliable and efficient operatio under heavy load.
 
 1.2.18   variable mailmess: mails messages to you.
          messages give the user feedback on what was sent.
@@ -79,7 +79,7 @@ Information on changes may not be exact or complete.
          extra info in up for admins
          annunreg seen by all admins
          hostinfo and lock removed as was fics_delplayer, fics_mailproc
-	 and mail_proc.
+  and mail_proc.
          see messages from one person, clear messages from a person
          More simul bug fixes.
          simprev (alias sp), goboard (alias go, goto), gonum commands.
@@ -103,7 +103,7 @@ Information on changes may not be exact or complete.
 1.2.12   bug fixes.
          pose weakened.
 1.2.11   First stable version of FICS.  unnotify and unalias had big problems
-	 that led to crashes and corrupt player files.
+  that led to crashes and corrupt player files.
          siteinfo removed - caused infinite lag
          mailmess
 1.2.10   bug fixes, max length enforced in alias to stop a crash.
@@ -119,7 +119,7 @@ Information on changes may not be exact or complete.
          addcomment and showcomment
 1.2.5    Summon written.
          ban list
-	 (TD) in who
+  (TD) in who
          board styles fixed
          shout quotas, it and shout modified
          admin command to toggle (*)
@@ -129,9 +129,9 @@ Information on changes may not be exact or complete.
          qtell, getpi, commands for TD
          asetblitz, asetstd
          news,anews
-	 wild chess made rated, best shows wild, new file
-	 asetwild
-	 next
+  wild chess made rated, best shows wild, new file
+  asetwild
+  next
          SGI compilation possible.
 1.2.3    lists
          (FM) (GM) (IM) (C) shown in who
@@ -150,12 +150,13 @@ Information on changes may not be exact or complete.
 1.1      who bug fixed - caused a crash if more than 10 players on.
          ++++ shown in who for unreg players
          early version of nuke.
-	 (*) shown if level 10 admin
+  (*) shown if level 10 admin
          level 60 given title Assistant superuser.
          who A, who l, who U, who R
          Look of announce and other stuff improved.
-1.0	 Original Nash code.
+1.0  Original Nash code
 -----------------------------------------------------------------------------
+
 Here is a more stable, hopefully more portable release of the
 FICS source code with many features added.
 

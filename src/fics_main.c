@@ -23,7 +23,7 @@
    Markus Uhlin                 23/12/10	Fixed the includes
    Markus Uhlin                 23/12/12	Revamped the file
    Markus Uhlin                 24/03/16	Fixed unbounded string copying
-						and marked usage() '__dead'.
+						and marked fics_usage() '__dead'.
    Markus Uhlin                 24/06/01	Added command-line option 'l'
    Markus Uhlin                 24/08/03	Added command-line option 'd'
 */
@@ -63,7 +63,7 @@
 PUBLIC int	port;
 PUBLIC int	withConsole;
 
-PRIVATE __dead void usage(char *);
+PRIVATE __dead void fics_usage(char *);
 
 PRIVATE void
 BrokenPipe(int sig)
@@ -125,10 +125,10 @@ GetArgs(int argc, char *argv[])
 			switch (argv[i][1]) {
 			case 'p':
 				if (i == argc - 1)
-					usage(argv[0]);
+					fics_usage(argv[0]);
 				i++;
 				if (sscanf(argv[i], "%d", &port) != 1)
-					usage(argv[0]);
+					fics_usage(argv[0]);
 				break;
 			case 'C':
 				fprintf(stderr, "-C Not implemented!\n");
@@ -139,14 +139,14 @@ GetArgs(int argc, char *argv[])
 				daemonize();
 				break;
 			case 'h':
-				usage(argv[0]);
+				fics_usage(argv[0]);
 				break;
 			case 'l':
 				puts(legalNotice);
 				exit(0);
 			}
 		} else {
-			usage(argv[0]);
+			fics_usage(argv[0]);
 		}
 	}
 }
@@ -180,9 +180,9 @@ main_event_loop(void)
 }
 
 PRIVATE __dead void
-usage(char *progname)
+fics_usage(char *progname)
 {
-	fprintf(stderr, "Usage: %s [-p port] [-C] [-dhl]\n", progname);
+	fprintf(stderr, "fics usage: %s [-p port] [-C] [-dhl]\n", progname);
 	fprintf(stderr, "\t\t-p port\t\tSpecify port.  (Default=%d)\n",
 	    DEFAULT_PORT);
 	fprintf(stderr, "\t\t-C\t\tStart with console player connected "
@@ -194,7 +194,7 @@ usage(char *progname)
 }
 
 PUBLIC int
-main(int argc, char *argv[])
+fics_main(int argc, char *argv[])
 {
 #ifdef DEBUG
 #ifdef HAVE_MALLOC_DEBUG
