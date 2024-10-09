@@ -28,7 +28,7 @@
 #ifndef _TALKPROC_H
 #define _TALKPROC_H
 
-#include <fics/command.h> /* param_list */
+#include "command.h" /* param_list */
 
 #define MAX_CHANNELS 256
 

@@ -30,29 +30,29 @@
 							insecure format strings.
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <sys/resource.h>
 
 #include <err.h>
 #include <string.h>
 
-#include <fics/board.h>
-#include <fics/command.h>
-#include <fics/comproc.h>
-#include <fics/eco.h>
-#include <fics/formula.h>
-#include <fics/gamedb.h>
-#include <fics/lists.h>
-#include <fics/matchproc.h>
-#include <fics/network.h>
-#include <fics/obsproc.h>
-#include <fics/playerdb.h>
-#include <fics/ratings.h>
-#include <fics/rmalloc.h>
-#include <fics/talkproc.h>
-#include <fics/utils.h>
+#include "board.h"
+#include "command.h"
+#include "comproc.h"
+#include "eco.h"
+#include "formula.h"
+#include "gamedb.h"
+#include "lists.h"
+#include "matchproc.h"
+#include "network.h"
+#include "obsproc.h"
+#include "playerdb.h"
+#include "ratings.h"
+#include "rmalloc.h"
+#include "talkproc.h"
+#include "utils.h"
 
 #if __linux__
 #include <bsd/string.h>

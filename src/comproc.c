@@ -35,33 +35,33 @@
 						plus truncation checks.
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <sys/resource.h>
 
 #include <err.h>
 
-#include <fics/board.h>
-#include <fics/command.h>
-#include <fics/comproc.h>
-#include <fics/config.h>
-#include <fics/eco.h>
-#include <fics/fics_getsalt.h>
-#include <fics/ficsmain.h>
-#include <fics/formula.h>
-#include <fics/gamedb.h>
-#include <fics/gameproc.h>
-#include <fics/lists.h>
-#include <fics/multicol.h>
-#include <fics/network.h>
-#include <fics/obsproc.h>
-#include <fics/playerdb.h>
-#include <fics/ratings.h>
-#include <fics/rmalloc.h>
-#include <fics/talkproc.h>
-#include <fics/utils.h>
-#include <fics/variable.h>
+#include "board.h"
+#include "command.h"
+#include "comproc.h"
+#include "config.h"
+#include "eco.h"
+#include "fics_getsalt.h"
+#include "ficsmain.h"
+#include "formula.h"
+#include "gamedb.h"
+#include "gameproc.h"
+#include "lists.h"
+#include "multicol.h"
+#include "network.h"
+#include "obsproc.h"
+#include "playerdb.h"
+#include "ratings.h"
+#include "rmalloc.h"
+#include "talkproc.h"
+#include "utils.h"
+#include "variable.h"
 
 #if __linux__
 #include <bsd/string.h>

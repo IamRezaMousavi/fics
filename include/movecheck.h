@@ -44,7 +44,7 @@
 #define isfile(c)	(((c) >= 'a') && ((c) <= 'h'))
 
 #if !defined(_BOARD_H)
-#include <fics/board.h>
+#include "board.h"
 #endif
 
 extern int	InitPieceLoop(board_t, int *, int *, int);

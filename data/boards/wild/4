@@ -1,2 +1,2 @@
-W: P a2 b2 c2 d2 e2 f2 g2 h2 R a1 N b1 K c1 R d1 B e1 f1 R g1 B h1
-B: P a7 b7 c7 d7 e7 f7 g7 h7 R a8 K b8 R c8 d8 N e8 B f8 g8 h8
+W: P a2 b2 c2 d2 e2 f2 g2 h2 R a1 b1 N c1 K d1 N e1 f1 Q g1 h1
+B: P a7 b7 c7 d7 e7 f7 g7 h7 Q a8 b8 R c8 d8 N e8 K f8 N g8 h8

@@ -8,7 +8,7 @@
 #ifndef _LISTS_H
 #define _LISTS_H
 
-#include <fics/command.h> /* param_list */
+#include "command.h" /* param_list */
 
 enum ListWhich {
 	L_ADMIN = 0,

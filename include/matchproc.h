@@ -1,4 +1,4 @@
-/* algcheck.h
+/* matchproc.h
  *
  */
 
@@ -18,23 +18,22 @@
 */
 
 /* Revision history:
-   name		email		yy/mm/dd	Change
-   Richard Nash			93/10/22	Created
-   Markus Uhlin			24/05/05	Revised
+   name				yy/mm/dd	Change
+   hersco			95/07/24	Created
+   Markus Uhlin			24/03/29	Revised
 */
 
-#ifndef _ALGCHECK_H
-#define _ALGCHECK_H
+#ifndef _MATCHPROC_H
+#define _MATCHPROC_H
 
-#ifndef _BOARD_H
-#include <fics/board.h>
-#endif
+#include "command.h"	/* param_list */
 
-#define DROP_CHAR	'@' // used by algcheck.c and movecheck.c
-#define DROP_STR	"@"
+extern int	com_accept(int, param_list);
+extern int	com_decline(int, param_list);
+extern int	com_match(int, param_list);
+extern int	com_pending(int, param_list);
+extern int	com_withdraw(int, param_list);
+extern int	create_new_match(int, int, int, int, int, int, int, char *,
+		    char *, int);
 
-extern char	*alg_unparse(game_state_t *, move_t *);
-extern int	 alg_is_move(char *);
-extern int	 alg_parse_move(char *, game_state_t *, move_t *);
-
-#endif /* _ALGCHECK_H */
+#endif /* _MATCHPROC_H */

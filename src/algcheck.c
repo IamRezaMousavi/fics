@@ -23,14 +23,14 @@
    Markus Uhlin			24/05/05	Revised
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
-#include <fics/algcheck.h>
-#include <fics/board.h>
-#include <fics/maxxes-utils.h>
-#include <fics/movecheck.h>
-#include <fics/utils.h>
+#include "algcheck.h"
+#include "board.h"
+#include "maxxes-utils.h"
+#include "movecheck.h"
+#include "utils.h"
 
 #define ALG_UNKNOWN -1
 

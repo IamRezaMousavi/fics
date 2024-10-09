@@ -27,16 +27,16 @@
 						functions.
 */
 
-#include <fics/stdinclude.h>
+#include "stdinclude.h"
 
-#include <fics/algcheck.h>
-#include <fics/board.h>
-#include <fics/common.h>
-#include <fics/gamedb.h>
-#include <fics/movecheck.h>
-#include <fics/network.h>
-#include <fics/playerdb.h>
-#include <fics/utils.h>
+#include "algcheck.h"
+#include "board.h"
+#include "common.h"
+#include "gamedb.h"
+#include "movecheck.h"
+#include "network.h"
+#include "playerdb.h"
+#include "utils.h"
 
 #if __linux__
 #include <bsd/string.h>

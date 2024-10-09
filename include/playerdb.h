@@ -23,8 +23,8 @@
    Markus Uhlin                 23/12/13	Cleaned up the file
 */
 
-#include <fics/command.h>
-#include <fics/lists.h>
+#include "command.h"
+#include "lists.h"
 
 #ifndef _PLAYERDB_H
 #define _PLAYERDB_H

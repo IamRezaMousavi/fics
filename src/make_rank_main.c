@@ -12,8 +12,8 @@
 #include <bsd/string.h>
 #endif
 
-#include <fics/common.h>
-#include <fics/makerank.h>
+#include "common.h"
+#include "makerank.h"
 
 static ENTRY	**list;
 static ENTRY	**sortme;

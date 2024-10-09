@@ -26,7 +26,7 @@
 #ifndef _OBSPROC_H
 #define _OBSPROC_H
 
-#include <fics/command.h> /* param_list */
+#include "command.h" /* param_list */
 
 #define MAX_JOURNAL 10
 

@@ -3,14 +3,14 @@
  * 18 Dec 2023.
  */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
-#include <fics/command.h>
-#include <fics/network.h>
-#include <fics/playerdb.h>
-#include <fics/shutdown.h>
-#include <fics/utils.h>
+#include "command.h"
+#include "network.h"
+#include "playerdb.h"
+#include "shutdown.h"
+#include "utils.h"
 
 #if __linux__
 #include <bsd/string.h>

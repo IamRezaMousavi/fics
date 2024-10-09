@@ -1,7 +1,7 @@
 #ifndef _RATINGCONV_H
 #define _RATINGCONV_H
 
-#include <fics/command.h>     /* param_list */
+#include "command.h"     /* param_list */
 
 extern int com_CONVERT_BCF(int, param_list);
 extern int com_CONVERT_ELO(int, param_list);

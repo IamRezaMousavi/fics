@@ -34,25 +34,25 @@
    Markus Uhlin                 24/08/13	Handled function return values
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <err.h>
 #include <stdint.h>
 
-#include <fics/command.h>
-#include <fics/comproc.h>
-#include <fics/config.h>
-#include <fics/ficslim.h>
-#include <fics/ficsmain.h>
-#include <fics/gamedb.h>
-#include <fics/lists.h>
-#include <fics/network.h>
-#include <fics/playerdb.h>
-#include <fics/ratings.h>
-#include <fics/rmalloc.h>
-#include <fics/talkproc.h>
-#include <fics/utils.h>
+#include "command.h"
+#include "comproc.h"
+#include "config.h"
+#include "ficslim.h"
+#include "ficsmain.h"
+#include "gamedb.h"
+#include "lists.h"
+#include "network.h"
+#include "playerdb.h"
+#include "ratings.h"
+#include "rmalloc.h"
+#include "talkproc.h"
+#include "utils.h"
 
 #if __linux__
 #include <bsd/string.h>

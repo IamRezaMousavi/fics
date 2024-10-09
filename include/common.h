@@ -31,9 +31,9 @@
 #ifndef _COMMON_H
 #define _COMMON_H
 
-#include <fics/assert_error.h>
-#include <fics/legal.h>
-#include <fics/vers.h>
+#include "assert_error.h"
+#include "legal.h"
+#include "vers.h"
 
 #define PUBLIC
 #define PRIVATE static

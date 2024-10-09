@@ -10,7 +10,7 @@
 #include <bsd/string.h>
 #endif
 
-#include <fics/maxxes-utils.h>
+#include "maxxes-utils.h"
 
 void
 snprintf_trunc_chk(const char *file, const long int line,

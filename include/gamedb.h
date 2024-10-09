@@ -29,7 +29,7 @@
 
 #include <time.h>
 
-#include <fics/board.h>
+#include "board.h"
 
 extern const char *bstr[7];
 extern const char *rstr[2];

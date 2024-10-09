@@ -29,30 +29,30 @@
 						handling functions.
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <sys/param.h>
 
 #include <err.h>
 
-#include <fics/command.h>
-#include <fics/command_list.h>
-#include <fics/config.h>
-#include <fics/fics_getsalt.h>
-#include <fics/ficsmain.h>
-#include <fics/gamedb.h>
-#include <fics/gameproc.h>
-#include <fics/maxxes-utils.h>
-#include <fics/movecheck.h>
-#include <fics/network.h>
-#include <fics/obsproc.h>
-#include <fics/playerdb.h>
-#include <fics/ratings.h>
-#include <fics/rmalloc.h>
-#include <fics/shutdown.h>
-#include <fics/utils.h>
-#include <fics/vers.h>
+#include "command.h"
+#include "command_list.h"
+#include "config.h"
+#include "fics_getsalt.h"
+#include "ficsmain.h"
+#include "gamedb.h"
+#include "gameproc.h"
+#include "maxxes-utils.h"
+#include "movecheck.h"
+#include "network.h"
+#include "obsproc.h"
+#include "playerdb.h"
+#include "ratings.h"
+#include "rmalloc.h"
+#include "shutdown.h"
+#include "utils.h"
+#include "vers.h"
 
 PUBLIC char	*adhelp_dir	= DEFAULT_ADHELP;
 PUBLIC char	*adj_dir	= DEFAULT_ADJOURNED;

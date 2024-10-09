@@ -30,20 +30,20 @@
    Markus Uhlin                 24/07/08	Added var 'interface'
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <stdbool.h>
 
-#include <fics/board.h>
-#include <fics/command.h>
-#include <fics/comproc.h>
-#include <fics/formula.h> /* SetValidFormula() */
-#include <fics/playerdb.h>
-#include <fics/rmalloc.h>
-#include <fics/talkproc.h>
-#include <fics/utils.h>
-#include <fics/variable.h>
+#include "board.h"
+#include "command.h"
+#include "comproc.h"
+#include "formula.h" /* SetValidFormula() */
+#include "playerdb.h"
+#include "rmalloc.h"
+#include "talkproc.h"
+#include "utils.h"
+#include "variable.h"
 
 #if __linux__
 #include <bsd/string.h>

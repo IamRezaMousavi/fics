@@ -27,8 +27,8 @@
 #ifndef _COMMAND_H
 #define _COMMAND_H
 
-#include <fics/variable.h>
-#include <fics/stdinclude.h>
+#include "variable.h"
+#include "stdinclude.h"
 
 /*
  * Maximum length of a login name

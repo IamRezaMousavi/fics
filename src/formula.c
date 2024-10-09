@@ -49,21 +49,21 @@
  * set, your formula is automatically set to f0 when you log in.
  */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <ctype.h>
 
-#include <fics/command.h>
-#include <fics/config.h>
-#include <fics/formula.h>
-#include <fics/gamedb.h>
-#include <fics/lists.h>
-#include <fics/network.h>
-#include <fics/playerdb.h>
-#include <fics/ratings.h>
-#include <fics/rmalloc.h>
-#include <fics/utils.h>
+#include "command.h"
+#include "config.h"
+#include "formula.h"
+#include "gamedb.h"
+#include "lists.h"
+#include "network.h"
+#include "playerdb.h"
+#include "ratings.h"
+#include "rmalloc.h"
+#include "utils.h"
 
 PRIVATE char *
 GetPlayersFormula(player *pWho, int clause)

@@ -1,7 +1,7 @@
 #ifndef GUARD_ISET_H
 #define GUARD_ISET_H
 
-#include <fics/command.h> /* param_list */
+#include "command.h" /* param_list */
 
 #ifdef __cplusplus
 extern "C" {

@@ -24,10 +24,10 @@
 */
 
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
-#include <fics/rmalloc.h>
+#include "rmalloc.h"
 
 PUBLIC unsigned int	allocated_size = 0;
 PUBLIC unsigned int	malloc_count = 0;

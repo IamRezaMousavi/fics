@@ -1,11 +1,11 @@
 // SPDX-FileCopyrightText: 2024 Markus Uhlin <maxxe@rpblc.net>
 // SPDX-License-Identifier: ISC
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
-#include <fics/iset.h>
-#include <fics/utils.h>
+#include "iset.h"
+#include "utils.h"
 
 PUBLIC int
 com_iset(int p, param_list param)

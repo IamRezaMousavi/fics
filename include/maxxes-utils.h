@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 
-#include <fics/common.h>
+#include "common.h"
 
 #define msnprintf(p_str, p_size, ...) \
 	snprintf_trunc_chk(__FILE__, __LINE__, (p_str), (p_size), __VA_ARGS__)

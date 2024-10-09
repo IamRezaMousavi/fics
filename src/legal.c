@@ -22,7 +22,7 @@
    Richard Nash	              	93/10/22	Created
 */
 
-#include <fics/legal.h>
+#include "legal.h"
 
 char legalNotice[] =
   "fics - An internet chess server.\n"

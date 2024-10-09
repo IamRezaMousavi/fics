@@ -1,6 +1,6 @@
 #ifndef _FICSPATHS_H_
 #define _FICSPATHS_H_
-#include <fics/config.h>
+#include "config.h"
 
 #define DEFAULT_ADHELP        PREFIX "/data/admin"
 #define DEFAULT_ADJOURNED     PREFIX "/games/adjourned"

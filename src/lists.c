@@ -5,22 +5,22 @@
  * This file is part of FICS.
  */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <string.h>
 
-#include <fics/command.h>
-#include <fics/comproc.h>
-#include <fics/gamedb.h>
-#include <fics/lists.h>
-#include <fics/maxxes-utils.h>
-#include <fics/multicol.h>
-#include <fics/playerdb.h>
-#include <fics/ratings.h>
-#include <fics/rmalloc.h>
-#include <fics/talkproc.h>
-#include <fics/utils.h>
+#include "command.h"
+#include "comproc.h"
+#include "gamedb.h"
+#include "lists.h"
+#include "maxxes-utils.h"
+#include "multicol.h"
+#include "playerdb.h"
+#include "ratings.h"
+#include "rmalloc.h"
+#include "talkproc.h"
+#include "utils.h"
 
 PRIVATE List *firstGlobalList = NULL;
 

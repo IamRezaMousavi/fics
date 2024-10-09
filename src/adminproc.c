@@ -13,26 +13,26 @@
  * details.
  */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <sys/param.h>
 
-#include <fics/adminproc.h>
-#include <fics/command.h>
-#include <fics/comproc.h>
-#include <fics/fics_getsalt.h>
-#include <fics/gamedb.h>
-#include <fics/gameproc.h>
-#include <fics/maxxes-utils.h>
-#include <fics/multicol.h>
-#include <fics/network.h>
-#include <fics/obsproc.h>
-#include <fics/playerdb.h>
-#include <fics/ratings.h>
-#include <fics/rmalloc.h>
-#include <fics/talkproc.h>
-#include <fics/utils.h>
+#include "adminproc.h"
+#include "command.h"
+#include "comproc.h"
+#include "fics_getsalt.h"
+#include "gamedb.h"
+#include "gameproc.h"
+#include "maxxes-utils.h"
+#include "multicol.h"
+#include "network.h"
+#include "obsproc.h"
+#include "playerdb.h"
+#include "ratings.h"
+#include "rmalloc.h"
+#include "talkproc.h"
+#include "utils.h"
 
 #define PASSLEN 8
 

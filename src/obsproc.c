@@ -30,28 +30,28 @@
 						fscanf().
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <err.h>
 
-#include <fics/command.h>
-#include <fics/comproc.h>
-#include <fics/config.h>
-#include <fics/eco.h>
-#include <fics/ficsmain.h>
-#include <fics/formula.h>
-#include <fics/gamedb.h>
-#include <fics/gameproc.h>
-#include <fics/matchproc.h>
-#include <fics/maxxes-utils.h>
-#include <fics/movecheck.h>
-#include <fics/network.h>
-#include <fics/obsproc.h>
-#include <fics/playerdb.h>
-#include <fics/ratings.h>
-#include <fics/rmalloc.h>
-#include <fics/utils.h>
+#include "command.h"
+#include "comproc.h"
+#include "config.h"
+#include "eco.h"
+#include "ficsmain.h"
+#include "formula.h"
+#include "gamedb.h"
+#include "gameproc.h"
+#include "matchproc.h"
+#include "maxxes-utils.h"
+#include "movecheck.h"
+#include "network.h"
+#include "obsproc.h"
+#include "playerdb.h"
+#include "ratings.h"
+#include "rmalloc.h"
+#include "utils.h"
 
 PUBLIC int
 GameNumFromParam(int p, int *p1, parameter *param)

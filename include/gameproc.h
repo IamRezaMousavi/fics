@@ -29,7 +29,7 @@
 #define MAX_SIMPASS	3
 #define MAX_JOURNAL	10
 
-#include <fics/command.h> /* param_list */
+#include "command.h" /* param_list */
 
 extern int	com_abort(int, param_list);
 extern int	com_adjourn(int, param_list);

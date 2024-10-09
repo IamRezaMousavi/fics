@@ -27,7 +27,7 @@
 #ifndef _ADMINPROC_H
 #define _ADMINPROC_H
 
-#include <fics/command.h>
+#include "command.h"
 
 extern int num_anews;
 

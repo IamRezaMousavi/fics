@@ -29,17 +29,17 @@
    Markus Uhlin			24/05/25	Added command-line option 'a'
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <err.h>
 #include <string.h>
 
-#include <fics/command.h>
-#include <fics/config.h>
-#include <fics/fics_getsalt.h>
-#include <fics/playerdb.h>
-#include <fics/utils.h>
+#include "command.h"
+#include "config.h"
+#include "fics_getsalt.h"
+#include "playerdb.h"
+#include "utils.h"
 
 #if __linux__
 #include <bsd/string.h>

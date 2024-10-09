@@ -1,4 +1,4 @@
-APP := xboard
+APP := fics-server
 
 CC      := gcc
 SRC_FMT := c

@@ -42,7 +42,7 @@
 #define SHOW_STANDARD    0x2
 #define SHOW_WILD        0x4
 
-#include <fics/command.h>
+#include "command.h"
 
 typedef struct _rateStruct {
 	char	name[MAX_LOGIN_NAME];

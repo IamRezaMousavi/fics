@@ -1,12 +1,12 @@
 /* Ratings conversions by DAV */
 /* GNU licensing applies */
 
-#include <fics/stdinclude.h>
+#include "stdinclude.h"
 
-#include <fics/command.h>
-#include <fics/common.h>
-#include <fics/rating_conv.h>
-#include <fics/utils.h>
+#include "command.h"
+#include "common.h"
+#include "rating_conv.h"
+#include "utils.h"
 
 PRIVATE int
 elo_to_uscf(int elo)

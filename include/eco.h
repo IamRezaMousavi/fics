@@ -1,7 +1,7 @@
 #ifndef _ECO_H
 #define _ECO_H
 
-#include <fics/command.h> /* param_list */
+#include "command.h" /* param_list */
 
 #define SPACE_CHK()\
 	do {\

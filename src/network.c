@@ -2,7 +2,7 @@
  *
  */
 
-#include <fics/stdinclude.h>
+#include "stdinclude.h"
 
 #include <sys/socket.h>
 
@@ -12,17 +12,17 @@
 
 #include <errno.h>
 
-#include <fics/common.h>
-#include <fics/config.h>
-#include <fics/ficsmain.h>
-#include <fics/maxxes-utils.h>
-#include <fics/network.h>
-#include <fics/playerdb.h>
-#include <fics/rmalloc.h>
+#include "common.h"
+#include "config.h"
+#include "ficsmain.h"
+#include "maxxes-utils.h"
+#include "network.h"
+#include "playerdb.h"
+#include "rmalloc.h"
 #ifdef TIMESEAL
-#include <fics/timeseal.h>
+#include "timeseal.h"
 #endif
-#include <fics/utils.h>
+#include "utils.h"
 
 /* Sparse array */
 PUBLIC connection con[512];

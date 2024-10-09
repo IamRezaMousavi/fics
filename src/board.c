@@ -27,17 +27,17 @@
    Markus Uhlin                 24/06/01	Added and made use of brand().
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <err.h>
 #include <limits.h>
 
-#include <fics/board.h>
-#include <fics/gamedb.h>
-#include <fics/maxxes-utils.h>
-#include <fics/playerdb.h>
-#include <fics/utils.h>
+#include "board.h"
+#include "gamedb.h"
+#include "maxxes-utils.h"
+#include "playerdb.h"
+#include "utils.h"
 
 #define WHITE_SQUARE	1
 #define BLACK_SQUARE	0

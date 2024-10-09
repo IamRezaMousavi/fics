@@ -28,19 +28,19 @@
 #ifndef _COMMAND_LIST_H
 #define _COMMAND_LIST_H
 
-#include <fics/adminproc.h>
-#include <fics/comproc.h>
-#include <fics/eco.h>
-#include <fics/gameproc.h>
-#include <fics/iset.h>
-#include <fics/lists.h>
-#include <fics/matchproc.h>
-#include <fics/obsproc.h>
-#include <fics/playerdb.h>
-#include <fics/rating_conv.h>
-#include <fics/ratings.h>
-#include <fics/shutdown.h>
-#include <fics/talkproc.h>
+#include "adminproc.h"
+#include "comproc.h"
+#include "eco.h"
+#include "gameproc.h"
+#include "iset.h"
+#include "lists.h"
+#include "matchproc.h"
+#include "obsproc.h"
+#include "playerdb.h"
+#include "rating_conv.h"
+#include "ratings.h"
+#include "shutdown.h"
+#include "talkproc.h"
 
 extern command_type	command_list[];
 extern alias_type	g_alias_list[];

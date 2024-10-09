@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <fics/assert_error.h>
+#include "assert_error.h"
 
 __dead void
 _assert_error(const char *file, const long int line)

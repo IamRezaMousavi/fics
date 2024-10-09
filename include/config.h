@@ -51,7 +51,7 @@
 /*
  * Locations of the data, players and games directories.
  */
-#include <fics/ficspaths.h>
+#include "ficspaths.h"
 
 /*
  * Where the standard ucb mail program is
@@ -85,5 +85,5 @@
 #define PREFIX	"."
 
 
-#include <fics/ficspaths.h>
+#include "ficspaths.h"
 #endif    /* _CONFIG_H */

@@ -28,8 +28,8 @@
    Markus Uhlin                 24/08/03	Added command-line option 'd'
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <sys/param.h>
 
@@ -39,21 +39,21 @@
 #include <stdint.h>
 #include <unistd.h>
 
-#include <fics/board.h>
-#include <fics/command.h>
-#include <fics/comproc.h>
-#include <fics/config.h>
+#include "board.h"
+#include "command.h"
+#include "comproc.h"
+#include "config.h"
 #ifndef IGNORE_ECO
-#include <fics/eco.h>
+#include "eco.h"
 #endif
-#include <fics/ficsmain.h>
-#include <fics/legal.h>
-#include <fics/network.h>
-#include <fics/playerdb.h>
-#include <fics/ratings.h>
-#include <fics/shutdown.h>
-#include <fics/talkproc.h>
-#include <fics/utils.h>
+#include "ficsmain.h"
+#include "legal.h"
+#include "network.h"
+#include "playerdb.h"
+#include "ratings.h"
+#include "shutdown.h"
+#include "talkproc.h"
+#include "utils.h"
 
 #if __linux__
 #include <bsd/string.h>

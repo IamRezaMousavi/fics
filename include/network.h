@@ -26,7 +26,7 @@
 #ifndef _NETWORK_H
 #define _NETWORK_H
 
-#include <fics/command.h>	/* For MAX_STRING_LENGTH */
+#include "command.h"	/* For MAX_STRING_LENGTH */
 
 #define NET_NETERROR		0
 #define NET_NEW			1

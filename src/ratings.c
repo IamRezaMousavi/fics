@@ -30,20 +30,20 @@
 						fscanf() calls.
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <err.h>
 #include <errno.h>
 
-#include <fics/command.h>
-#include <fics/comproc.h>
-#include <fics/config.h>
-#include <fics/gamedb.h>
-#include <fics/lists.h>
-#include <fics/playerdb.h>
-#include <fics/ratings.h>
-#include <fics/utils.h>
+#include "command.h"
+#include "comproc.h"
+#include "config.h"
+#include "gamedb.h"
+#include "lists.h"
+#include "playerdb.h"
+#include "ratings.h"
+#include "utils.h"
 
 #if __linux__
 #include <bsd/string.h>

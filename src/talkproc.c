@@ -35,20 +35,20 @@
 						functions.
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
-#include <fics/command.h>
-#include <fics/comproc.h>
-#include <fics/formula.h>
-#include <fics/gamedb.h>
-#include <fics/gameproc.h>
-#include <fics/lists.h>
-#include <fics/maxxes-utils.h>
-#include <fics/network.h>
-#include <fics/playerdb.h>
-#include <fics/talkproc.h>
-#include <fics/utils.h>
+#include "command.h"
+#include "comproc.h"
+#include "formula.h"
+#include "gamedb.h"
+#include "gameproc.h"
+#include "lists.h"
+#include "maxxes-utils.h"
+#include "network.h"
+#include "playerdb.h"
+#include "talkproc.h"
+#include "utils.h"
 
 #include <sys/resource.h>
 

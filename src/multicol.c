@@ -24,14 +24,14 @@
    Markus Uhlin                 24/05/05	Usage of reallocarray()
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <err.h>
 
-#include <fics/multicol.h>
-#include <fics/rmalloc.h>
-#include <fics/utils.h>
+#include "multicol.h"
+#include "rmalloc.h"
+#include "utils.h"
 
 PUBLIC multicol *
 multicol_start(int maxArray)

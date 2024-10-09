@@ -34,16 +34,16 @@
    Markus Uhlin			24/08/11	Improved fix_time().
 */
 
-#include <fics/stdinclude.h>
-#include <fics/common.h>
+#include "stdinclude.h"
+#include "common.h"
 
 #include <err.h>
 
-#include <fics/config.h>
-#include <fics/network.h>
-#include <fics/playerdb.h>
-#include <fics/rmalloc.h>
-#include <fics/utils.h>
+#include "config.h"
+#include "network.h"
+#include "playerdb.h"
+#include "rmalloc.h"
+#include "utils.h"
 
 #if __linux__
 #include <bsd/string.h>

@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include <fics/fics_getsalt.h>
+#include "fics_getsalt.h"
 
 char *
 fics_getsalt(void)

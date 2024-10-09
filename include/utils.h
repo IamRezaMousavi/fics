@@ -31,9 +31,10 @@
 #define _UTILS_H
 
 #include <stdio.h>
+#include <time.h>
 
-#include <fics/common.h> /* PRINTFLIKE() */
-#include <fics/multicol.h>
+#include "common.h" /* PRINTFLIKE() */
+#include "multicol.h"
 
 #define MAX_WORD_SIZE 1024
 
