@@ -23,11 +23,13 @@
    Markus Uhlin                 23/12/13	Cleaned up the file
 */
 
-#include "command.h"
-#include "lists.h"
-
 #ifndef _PLAYERDB_H
 #define _PLAYERDB_H
+
+#include <time.h>
+
+#include "command.h"
+#include "lists.h"
 
 #define PLAYER_VERSION 1
 

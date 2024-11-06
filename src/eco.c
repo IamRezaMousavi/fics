@@ -2,11 +2,16 @@
  *
  */
 
-#include "stdinclude.h"
-#include "common.h"
-
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 #include <err.h>
 
+#if __linux__
+#include <bsd/string.h>
+#endif
+
+#include "common.h"
 #include "board.h"
 #include "command.h"
 #include "config.h"
@@ -16,10 +21,6 @@
 #include "obsproc.h"
 #include "playerdb.h"
 #include "utils.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 PRIVATE char *book_dir = DEFAULT_BOOK;
 

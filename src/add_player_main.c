@@ -29,21 +29,22 @@
    Markus Uhlin			24/05/25	Added command-line option 'a'
 */
 
-#include "stdinclude.h"
-#include "common.h"
-
+#include <unistd.h>
 #include <err.h>
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
+#if __linux__
+#include <bsd/string.h>
+#endif
+
+#include "common.h"
 #include "command.h"
 #include "config.h"
 #include "fics_getsalt.h"
 #include "playerdb.h"
 #include "utils.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 #define PASSLEN 8
 

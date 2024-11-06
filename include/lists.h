@@ -3,10 +3,10 @@
  * Revised by maxxe 23/12/15
  */
 
-#include <stdio.h>
-
 #ifndef _LISTS_H
 #define _LISTS_H
+
+#include <stdio.h>
 
 #include "command.h" /* param_list */
 

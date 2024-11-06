@@ -1,5 +1,3 @@
-bin/
-
 # <--------------- C
 # Prerequisites
 *.d
@@ -58,3 +56,6 @@ bin/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+# <------------------- build
+bin/

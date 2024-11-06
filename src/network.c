@@ -2,14 +2,16 @@
  *
  */
 
-#include "stdinclude.h"
-
+#include <sys/ioctl.h>
 #include <sys/socket.h>
+#include <sys/time.h>
 
 #include <arpa/inet.h>
 #include <arpa/telnet.h>
-#include <netinet/in.h>
 
+#include <ctype.h>
+#include <string.h>
+#include <unistd.h>
 #include <errno.h>
 
 #include "common.h"

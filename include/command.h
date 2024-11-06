@@ -27,8 +27,9 @@
 #ifndef _COMMAND_H
 #define _COMMAND_H
 
+#include <time.h>
+
 #include "variable.h"
-#include "stdinclude.h"
 
 /*
  * Maximum length of a login name

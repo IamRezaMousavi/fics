@@ -33,13 +33,20 @@
 						overflows.
    Markus Uhlin                 24/08/13	Handled function return values
 */
-
-#include "stdinclude.h"
-#include "common.h"
+#include <sys/dir.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
 #include <err.h>
 #include <stdint.h>
 
+#if __linux__
+#include <bsd/string.h>
+#endif
+
+#include "common.h"
 #include "command.h"
 #include "comproc.h"
 #include "config.h"
@@ -53,10 +60,6 @@
 #include "rmalloc.h"
 #include "talkproc.h"
 #include "utils.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 PUBLIC player	 parray[PARRAY_SIZE];
 PUBLIC int	 p_num = 0;

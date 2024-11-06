@@ -1,8 +1,6 @@
 /* Ratings conversions by DAV */
 /* GNU licensing applies */
 
-#include "stdinclude.h"
-
 #include "command.h"
 #include "common.h"
 #include "rating_conv.h"
