@@ -5,11 +5,10 @@
  * This file is part of FICS.
  */
 
-#include "stdinclude.h"
-#include "common.h"
-
+#include <stdio.h>
 #include <string.h>
 
+#include "common.h"
 #include "command.h"
 #include "comproc.h"
 #include "gamedb.h"

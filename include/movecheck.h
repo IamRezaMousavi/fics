@@ -26,6 +26,8 @@
 #ifndef _MOVECHECK_H
 #define _MOVECHECK_H
 
+#include "board.h"
+
 #define MOVE_OK          0
 #define MOVE_ILLEGAL     1
 #define MOVE_STALEMATE   2
@@ -42,10 +44,6 @@
 
 #define isrank(c)	(((c) <= '8') && ((c) >= '1'))
 #define isfile(c)	(((c) >= 'a') && ((c) <= 'h'))
-
-#if !defined(_BOARD_H)
-#include "board.h"
-#endif
 
 extern int	InitPieceLoop(board_t, int *, int *, int);
 extern int	NextPieceLoop(board_t, int *, int *, int);

@@ -29,13 +29,15 @@
 						handling functions.
 */
 
-#include "stdinclude.h"
-#include "common.h"
-
 #include <sys/param.h>
-
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
 #include <err.h>
 
+#include "common.h"
 #include "command.h"
 #include "command_list.h"
 #include "config.h"

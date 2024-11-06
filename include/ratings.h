@@ -26,6 +26,8 @@
 #ifndef _RATINGS_H
 #define _RATINGS_H
 
+#include "command.h"
+
 #define STATS_VERSION 2
 
 #define RESULT_WIN       0
@@ -41,8 +43,6 @@
 #define SHOW_BLITZ       0x1
 #define SHOW_STANDARD    0x2
 #define SHOW_WILD        0x4
-
-#include "command.h"
 
 typedef struct _rateStruct {
 	char	name[MAX_LOGIN_NAME];

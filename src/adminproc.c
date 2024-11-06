@@ -13,11 +13,13 @@
  * details.
  */
 
-#include "stdinclude.h"
-#include "common.h"
-
 #include <sys/param.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
+#include "common.h"
 #include "adminproc.h"
 #include "command.h"
 #include "comproc.h"

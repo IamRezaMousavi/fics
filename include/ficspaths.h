@@ -1,5 +1,6 @@
 #ifndef _FICSPATHS_H_
 #define _FICSPATHS_H_
+
 #include "config.h"
 
 #define DEFAULT_ADHELP        PREFIX "/data/admin"

@@ -27,12 +27,13 @@
    Markus Uhlin                 24/06/01	Added and made use of brand().
 */
 
-#include "stdinclude.h"
-#include "common.h"
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <err.h>
 #include <limits.h>
 
+#include "common.h"
 #include "board.h"
 #include "gamedb.h"
 #include "maxxes-utils.h"

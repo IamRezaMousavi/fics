@@ -32,11 +32,17 @@
    Markus Uhlin                 24/08/03	See previous change
 */
 
-#include "stdinclude.h"
-#include "common.h"
-
+#include <sys/errno.h>
+#include <sys/file.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
 #include <err.h>
 
+#include "common.h"
 #include "command.h"
 #include "config.h"
 #include "eco.h"
@@ -48,10 +54,6 @@
 #include "playerdb.h"
 #include "rmalloc.h"
 #include "utils.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 /*
  * This should be enough to hold any game up to at least 250 moves. If

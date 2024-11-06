@@ -26,9 +26,7 @@
 #ifndef _ALGCHECK_H
 #define _ALGCHECK_H
 
-#ifndef _BOARD_H
 #include "board.h"
-#endif
 
 #define DROP_CHAR	'@' // used by algcheck.c and movecheck.c
 #define DROP_STR	"@"

@@ -35,13 +35,20 @@
 						plus truncation checks.
 */
 
-#include "stdinclude.h"
-#include "common.h"
-
 #include <sys/resource.h>
-
+#include <ctype.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
 #include <err.h>
 
+#if __linux__
+#include <bsd/string.h>
+#endif
+
+#include "common.h"
 #include "board.h"
 #include "command.h"
 #include "comproc.h"
@@ -62,10 +69,6 @@
 #include "talkproc.h"
 #include "utils.h"
 #include "variable.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 #define WHO_OPEN         0x01
 #define WHO_CLOSED       0x02

@@ -30,11 +30,15 @@
 						fscanf().
 */
 
-#include "stdinclude.h"
-#include "common.h"
-
+#include <sys/dir.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 #include <err.h>
 
+#include "common.h"
 #include "command.h"
 #include "comproc.h"
 #include "config.h"

@@ -32,11 +32,17 @@
    Markus Uhlin			24/05/05	Added usage of reallocarray().
 */
 
-#include "stdinclude.h"
-#include "common.h"
-
+#include <sys/dir.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <err.h>
 
+#if __linux__
+#include <bsd/string.h>
+#endif
+
+#include "common.h"
 #include "command.h"
 #include "comproc.h"
 #include "config.h"
@@ -54,10 +60,6 @@
 #include "ratings.h"
 #include "rmalloc.h"
 #include "utils.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 PUBLIC void
 game_ended(int g, int winner, int why)

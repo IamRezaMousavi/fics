@@ -49,11 +49,10 @@
  * set, your formula is automatically set to f0 when you log in.
  */
 
-#include "stdinclude.h"
-#include "common.h"
-
+#include <string.h>
 #include <ctype.h>
 
+#include "common.h"
 #include "command.h"
 #include "config.h"
 #include "formula.h"

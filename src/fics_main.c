@@ -28,17 +28,23 @@
    Markus Uhlin                 24/08/03	Added command-line option 'd'
 */
 
-#include "stdinclude.h"
-#include "common.h"
-
 #include <sys/param.h>
-
+#include <sys/stat.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <err.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <stdint.h>
 #include <unistd.h>
 
+#if __linux__
+#include <bsd/string.h>
+#endif
+
+#include "common.h"
 #include "board.h"
 #include "command.h"
 #include "comproc.h"
@@ -54,10 +60,6 @@
 #include "shutdown.h"
 #include "talkproc.h"
 #include "utils.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 /* Arguments */
 PUBLIC int	port;

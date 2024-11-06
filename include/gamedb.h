@@ -28,6 +28,8 @@
 #define _GAMEDB_H
 
 #include <time.h>
+#include <stdio.h>
+#include <stdint.h>
 
 #include "board.h"
 

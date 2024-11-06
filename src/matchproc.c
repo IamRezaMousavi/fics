@@ -30,14 +30,18 @@
 							insecure format strings.
 */
 
-#include "stdinclude.h"
-#include "common.h"
-
 #include <sys/resource.h>
-
-#include <err.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <err.h>
 
+#if __linux__
+#include <bsd/string.h>
+#endif
+
+#include "common.h"
 #include "board.h"
 #include "command.h"
 #include "comproc.h"
@@ -53,10 +57,6 @@
 #include "rmalloc.h"
 #include "talkproc.h"
 #include "utils.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 struct print_bh_context {
 	int	 pp;

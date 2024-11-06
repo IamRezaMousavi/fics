@@ -27,7 +27,12 @@
 						functions.
 */
 
-#include "stdinclude.h"
+#include <stdio.h>
+#include <string.h>
+
+#if __linux__
+#include <bsd/string.h>
+#endif
 
 #include "algcheck.h"
 #include "board.h"
@@ -37,10 +42,6 @@
 #include "network.h"
 #include "playerdb.h"
 #include "utils.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 /*
  * Simply tests if the input string is a move or not. If it matches

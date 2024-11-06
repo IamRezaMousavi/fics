@@ -30,11 +30,18 @@
    Markus Uhlin                 24/07/08	Added var 'interface'
 */
 
-#include "stdinclude.h"
-#include "common.h"
+#include <string.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include <stdbool.h>
 
+#if __linux__
+#include <bsd/string.h>
+#endif
+
+#include "common.h"
 #include "board.h"
 #include "command.h"
 #include "comproc.h"
@@ -44,10 +51,6 @@
 #include "talkproc.h"
 #include "utils.h"
 #include "variable.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 PRIVATE int
 set_boolean_var(int *var, char *val)

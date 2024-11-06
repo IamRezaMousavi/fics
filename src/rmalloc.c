@@ -24,9 +24,10 @@
 */
 
 
-#include "stdinclude.h"
-#include "common.h"
+#include <stdio.h>
+#include <stdlib.h>
 
+#include "common.h"
 #include "rmalloc.h"
 
 PUBLIC unsigned int	allocated_size = 0;

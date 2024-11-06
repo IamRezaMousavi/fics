@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: 2024 Markus Uhlin <maxxe@rpblc.net>
 // SPDX-License-Identifier: ISC
 
-#include "stdinclude.h"
-#include "common.h"
+#include <stdlib.h>
 
+#include "common.h"
 #include "iset.h"
 #include "utils.h"
 

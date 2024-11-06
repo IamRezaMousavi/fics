@@ -24,11 +24,12 @@
    Markus Uhlin                 24/05/05	Usage of reallocarray()
 */
 
-#include "stdinclude.h"
-#include "common.h"
+#include <stdlib.h>
+#include <string.h>
 
 #include <err.h>
 
+#include "common.h"
 #include "multicol.h"
 #include "rmalloc.h"
 #include "utils.h"

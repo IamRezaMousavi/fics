@@ -35,9 +35,12 @@
 						functions.
 */
 
-#include "stdinclude.h"
-#include "common.h"
+#include <sys/resource.h>
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
 
+#include "common.h"
 #include "command.h"
 #include "comproc.h"
 #include "formula.h"
@@ -49,8 +52,6 @@
 #include "playerdb.h"
 #include "talkproc.h"
 #include "utils.h"
-
-#include <sys/resource.h>
 
 #define TELL_TELL        0
 #define TELL_SAY         1

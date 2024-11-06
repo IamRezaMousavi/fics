@@ -23,9 +23,10 @@
    Markus Uhlin			24/05/05	Revised
 */
 
-#include "stdinclude.h"
-#include "common.h"
+#include <ctype.h>
+#include <string.h>
 
+#include "common.h"
 #include "algcheck.h"
 #include "board.h"
 #include "maxxes-utils.h"

@@ -3,18 +3,21 @@
  * 18 Dec 2023.
  */
 
-#include "stdinclude.h"
-#include "common.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
+#if __linux__
+#include <bsd/string.h>
+#endif
+
+#include "common.h"
 #include "command.h"
 #include "network.h"
 #include "playerdb.h"
 #include "shutdown.h"
 #include "utils.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 PRIVATE char	 downer[1024];
 PRIVATE char	 reason[1024];

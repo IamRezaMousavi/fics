@@ -30,12 +30,20 @@
 						fscanf() calls.
 */
 
-#include "stdinclude.h"
-#include "common.h"
-
+#include <sys/dir.h>
+#include <ctype.h>
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
 #include <err.h>
 #include <errno.h>
 
+#if __linux__
+#include <bsd/string.h>
+#endif
+
+#include "common.h"
 #include "command.h"
 #include "comproc.h"
 #include "config.h"
@@ -44,10 +52,6 @@
 #include "playerdb.h"
 #include "ratings.h"
 #include "utils.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 // Constants for Glicko system
 #define Gd	3.25

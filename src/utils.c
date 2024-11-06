@@ -34,20 +34,23 @@
    Markus Uhlin			24/08/11	Improved fix_time().
 */
 
-#include "stdinclude.h"
-#include "common.h"
-
+#include <sys/dir.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <ctype.h>
+#include <stdarg.h>
 #include <err.h>
 
+#if __linux__
+#include <bsd/string.h>
+#endif
+
+#include "common.h"
 #include "config.h"
 #include "network.h"
 #include "playerdb.h"
 #include "rmalloc.h"
 #include "utils.h"
-
-#if __linux__
-#include <bsd/string.h>
-#endif
 
 struct t_tree {
 	struct t_tree	*left, *right;
