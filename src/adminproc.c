@@ -17,6 +17,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <unistd.h>
 
 #include "common.h"
@@ -53,7 +54,8 @@ PUBLIC int num_anews = -1;
 PUBLIC int
 com_adjudicate(int p, param_list param)
 {
-	int	wp, wconnected, bp, bconnected, g, inprogress, confused = 0;
+	int	wp, wconnected, bp, bconnected, g;
+	bool confused = false;
 
 	ASSERT(parray[p].adminLevel >= ADMIN_ADMIN);
 
@@ -65,7 +67,7 @@ com_adjudicate(int p, param_list param)
 		return COM_OK;
 	}
 
-	inprogress = (parray[wp].game >= 0 && parray[wp].opponent == bp);
+	bool inprogress = (parray[wp].game >= 0 && parray[wp].opponent == bp);
 
 	if (inprogress) {
 		g = parray[wp].game;
@@ -73,7 +75,7 @@ com_adjudicate(int p, param_list param)
 		g = game_new();
 
 		if (game_read(g, wp, bp) < 0) {
-			confused = 1;
+			confused = true;
 			pprintf(p, "There is no stored game %s vs. %s\n",
 			    parray[wp].name,
 			    parray[bp].name);
@@ -137,7 +139,7 @@ com_adjudicate(int p, param_list param)
 			    parray[wp].name,
 			    parray[bp].name);
 		} else {
-			confused = 1;
+			confused = true;
 			pprintf(p, "Result must be one of: abort draw white "
 			    "black\n");
 		}
@@ -167,7 +169,7 @@ com_adjudicate(int p, param_list param)
  *                    file, depending upon the admin switch.
  */
 PRIVATE int
-create_news_file(int p, param_list param, int admin)
+create_news_file(int p, param_list param, bool admin)
 {
 	FILE	*fp;
 	char	 filename[MAX_FILENAME_SIZE] = { '\0' };
@@ -244,7 +246,7 @@ add_item(char *new_item, char *filename)
  * depending upon the admin switch.
  */
 PRIVATE int
-create_news_index(int p, param_list param, int admin)
+create_news_index(int p, param_list param, bool admin)
 {
 	char	 filename[MAX_FILENAME_SIZE] = { '\0' };
 	char	 new_item[MAX_LINE_SIZE] = { '\0' };
@@ -319,7 +321,7 @@ create_news_index(int p, param_list param, int admin)
 PUBLIC int
 com_cnewsi(int p, param_list param)
 {
-	return create_news_index(p, param, 0);
+	return create_news_index(p, param, false);
 }
 
 /* cnewsf
@@ -335,19 +337,19 @@ com_cnewsi(int p, param_list param)
 PUBLIC int
 com_cnewsf(int p, param_list param)
 {
-	return create_news_file(p, param, 0);
+	return create_news_file(p, param, false);
 }
 
 PUBLIC int
 com_canewsi(int p, param_list param)
 {
-	return create_news_index(p, param, 1);
+	return create_news_index(p, param, true);
 }
 
 PUBLIC int
 com_canewsf(int p, param_list param)
 {
-	return create_news_file(p, param, 1);
+	return create_news_file(p, param, true);
 }
 
 /*
@@ -369,7 +371,7 @@ com_anews(int p, param_list param)
 	char		 count[10];
 	char		 filename[MAX_FILENAME_SIZE] = { '\0' };
 	char		 junk[MAX_LINE_SIZE] = { '\0' };
-	int		 found = 0;
+	bool		 found = false;
 	long int	 lval;
 	time_t		 crtime;
 
@@ -433,7 +435,7 @@ com_anews(int p, param_list param)
 				crtime = lval;
 
 				if (!strcmp(count, param[0].val.word)) {
-					found = 1;
+					found = true;
 
 					junkp = nextword(junkp);
 					junkp = nextword(junkp);
@@ -521,15 +523,15 @@ PUBLIC int
 com_checkSOCKET(int p, param_list param)
 {
 	int	fd = param[0].val.integer;
-	int	p1, flag;
+	int	p1;
 
 	ASSERT(parray[p].adminLevel >= ADMIN_ADMIN);
 
-	flag = 0;
+	bool flag = false;
 
 	for (p1 = 0; p1 < p_num; p1++) {
 		if (parray[p1].socket == fd) {
-			flag = 1;
+			flag = true;
 			pprintf(p, "Socket %d is used by %s\n", fd,
 			    parray[p1].name);
 		}
@@ -664,7 +666,7 @@ com_checkGAME(int p, param_list param)
 {
 	char		 tmp[10 + 1 + 7];	// enough to store number
 						// 'black: ' and '\0'
-	int		 found = 0;
+	bool		 found = false;
 	int		 p1, g, link;
 	multicol	*m;
 	time_t		 startTime;
@@ -697,14 +699,14 @@ com_checkGAME(int p, param_list param)
 					msnprintf(tmp, sizeof tmp, "White: %d",
 					    g);
 					multicol_store(m, tmp);
-					found = 1;
+					found = true;
 				}
 				if (!strcasecmp(garray[g].black_name,
 				    param[0].val.word)) {
 					msnprintf(tmp, sizeof tmp, "Black: %d",
 					    g);
 					multicol_store(m, tmp);
-					found = 1;
+					found = true;
 				}
 			}
 
@@ -733,14 +735,14 @@ com_checkGAME(int p, param_list param)
 					msnprintf(tmp, sizeof tmp, "White: %d",
 					    g);
 					multicol_store(m, tmp);
-					found = 1;
+					found = true;
 				}
 
 				if (garray[g].black == p1) {
 					msnprintf(tmp, sizeof tmp, "Black: %d",
 					    g);
 					multicol_store(m, tmp);
-					found = 1;
+					found = true;
 				}
 			}
 
@@ -820,9 +822,9 @@ com_checkGAME(int p, param_list param)
 		game_update_time(g);
 
 	pprintf(p, "White's time %s    Black's time ",
-	    tenth_str((garray[g].wTime > 0 ? garray[g].wTime : 0), 0));
+	    tenth_str((garray[g].wTime > 0 ? garray[g].wTime : 0), false));
 	pprintf(p, "%s\n",
-	    tenth_str((garray[g].bTime > 0 ? garray[g].bTime : 0), 0));
+	    tenth_str((garray[g].bTime > 0 ? garray[g].bTime : 0), false));
 	pprintf(p, "The clock is%sticking\n", ((garray[g].clockStopped ||
 	    garray[g].status != GAME_ACTIVE) ? " not " : " "));
 

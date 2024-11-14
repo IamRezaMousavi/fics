@@ -34,6 +34,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #if __linux__
 #include <bsd/string.h>
@@ -52,7 +53,7 @@ PRIVATE char	*funame = NULL;
 PRIVATE char	*fname = NULL;
 PRIVATE char	*email = NULL;
 
-PRIVATE int admin = 0;
+PRIVATE bool admin = false;
 
 PRIVATE void
 add_handle_to_list(const char *handle)
@@ -92,7 +93,7 @@ add_player_main(int argc, char *argv[])
 		if (argv[i][0] == '-') {
 			switch (argv[i][1]) {
 			case 'a':
-				admin = 1;
+				admin = true;
 				break;
 			case '?':
 			case 'h':

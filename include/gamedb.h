@@ -30,6 +30,7 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 #include "board.h"
 
@@ -184,7 +185,7 @@ extern void	 addjournalitem(int, char, char *, int, char *, int, char *,
 extern void	 game_disconnect(int, int);
 extern void	 game_update_time(int);
 extern void	 game_update_times(void);
-extern void	 game_write_complete(int, int, char *);
+extern void	 game_write_complete(int, bool, char *);
 extern void	 send_board_to(int, int);
 extern void	 send_boards(int);
 

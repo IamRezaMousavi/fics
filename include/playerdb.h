@@ -26,6 +26,7 @@
 #ifndef _PLAYERDB_H
 #define _PLAYERDB_H
 
+#include <stdbool.h>
 #include <time.h>
 
 #include "command.h"
@@ -240,7 +241,7 @@ extern int	 player_markdeleted(int);
 extern int	 player_new(void);
 extern int	 player_new_pendfrom(int);
 extern int	 player_new_pendto(int);
-extern int	 player_notified(int, int);
+extern bool	 player_notified(int, int);
 extern int	 player_notified_departure(int);
 extern int	 player_notify(int, char *, char *);
 extern int	 player_notify_present (int);

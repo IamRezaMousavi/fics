@@ -261,7 +261,7 @@ sendme(int which, char *str, int len)
  * '-1' for an error other than 'EWOULDBLOCK'.
  */
 PUBLIC int
-net_send_string(int fd, char *str, int format)
+net_send_string(int fd, char *str, bool format)
 {
 	int which, i, j;
 

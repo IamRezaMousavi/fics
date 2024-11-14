@@ -29,6 +29,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 #include <err.h>
 #include <limits.h>
@@ -283,7 +284,7 @@ move_and_time(move_t *m)
 	static char tmp[20];
 
 	msnprintf(tmp, sizeof tmp, "%-7s (%s)", m->algString,
-	    tenth_str(m->tookTime, 0));
+	    tenth_str(m->tookTime, false));
 	return &tmp[0];
 }
 
@@ -367,12 +368,12 @@ genstyle(game_state_t *b, move_t *ml, char *wp[], char *bp[],
 			break;
 		case 4:
 			msnprintf(tmp, sizeof tmp, "     Black Clock : %s",
-			    tenth_str((bTime > 0 ? bTime : 0), 1));
+			    tenth_str((bTime > 0 ? bTime : 0), true));
 			mstrlcat(bstring, tmp, sizeof bstring);
 			break;
 		case 3:
 			msnprintf(tmp, sizeof tmp, "     White Clock : %s",
-			    tenth_str((wTime > 0 ? wTime : 0), 1));
+			    tenth_str((wTime > 0 ? wTime : 0), true));
 			mstrlcat(bstring, tmp, sizeof bstring);
 			break;
 		case 2:
@@ -736,7 +737,7 @@ style8(game_state_t *b, move_t *ml)
 	    : "none"),
 
 	    (garray[b->gameNum].numHalfMoves
-	    ? tenth_str(ml[garray[b->gameNum].numHalfMoves - 1].tookTime, 0)
+	    ? tenth_str(ml[garray[b->gameNum].numHalfMoves - 1].tookTime, false)
 	    : "0:00"));
 
 	mstrlcat(bstring, tmp, sizeof bstring);
@@ -797,18 +798,16 @@ PUBLIC int
 style10(game_state_t *b, move_t *ml)
 {
 	char	 tmp[80];
-	int	 f, r;
-	int	 ret, too_long;
 	int	 ws, bs;
 
 	board_calc_strength(b, &ws, &bs);
 	msnprintf(tmp, sizeof tmp, "<10>\n");
 	mstrlcat(bstring, tmp, sizeof bstring);
 
-	for (r = 7; r >= 0; r--) {
+	for (int r = 7; r >= 0; r--) {
 		mstrlcat(bstring, "|", sizeof bstring);
 
-		for (f = 0; f < 8; f++) {
+		for (int f = 0; f < 8; f++) {
 			if (b->board[f][r] == NOPIECE) {
 				mstrlcat(bstring, " ", sizeof bstring);
 			} else {
@@ -849,7 +848,7 @@ style10(game_state_t *b, move_t *ml)
 
 	mstrlcat(bstring, tmp, sizeof bstring);
 
-	ret = snprintf(tmp, sizeof tmp, "%d %s %s %d %d %d %d %d %d %d %d %s "
+	int ret = snprintf(tmp, sizeof tmp, "%d %s %s %d %d %d %d %d %d %d %d %s "
 	    "(%s) %s %d\n",
 	    b->gameNum,
 	    garray[b->gameNum].white_name,
@@ -868,7 +867,7 @@ style10(game_state_t *b, move_t *ml)
 	    : "none"),
 
 	    (garray[b->gameNum].numHalfMoves
-	    ? tenth_str(ml[garray[b->gameNum].numHalfMoves - 1].tookTime, 0)
+	    ? tenth_str(ml[garray[b->gameNum].numHalfMoves - 1].tookTime, false)
 	    : "0:00"),
 
 	    (garray[b->gameNum].numHalfMoves
@@ -877,7 +876,7 @@ style10(game_state_t *b, move_t *ml)
 
 	    (orient == WHITE ? 0 : 1));
 
-	too_long = (ret < 0 || (size_t)ret >= sizeof tmp);
+	bool too_long = (ret < 0 || (size_t)ret >= sizeof tmp);
 
 	if (too_long) {
 		fprintf(stderr, "FICS: %s: warning: snprintf truncated\n",
@@ -946,7 +945,7 @@ style11(game_state_t *b, move_t *ml)
 	    : "none"),
 
 	    (garray[b->gameNum].numHalfMoves
-	    ? tenth_str(ml[garray[b->gameNum].numHalfMoves - 1].tookTime, 0)
+	    ? tenth_str(ml[garray[b->gameNum].numHalfMoves - 1].tookTime, false)
 	    : "0:00"));
 
 	mstrlcat(bstring, tmp, sizeof bstring);
@@ -960,15 +959,13 @@ PUBLIC int
 style12(game_state_t *b, move_t *ml)
 {
 	char	 tmp[80];
-	int	 f, r;
-	int	 ret, too_long;
 	int	 ws, bs;
 
 	board_calc_strength(b, &ws, &bs);
 	msnprintf(bstring, sizeof bstring, "<12> ");
 
-	for (r = 7; r >= 0; r--) {
-		for (f = 0; f < 8; f++) {
+	for (int r = 7; r >= 0; r--) {
+		for (int f = 0; f < 8; f++) {
 			if (b->board[f][r] == NOPIECE) {
 				mstrlcat(bstring, "-", sizeof bstring);
 			} else {
@@ -1008,7 +1005,7 @@ style12(game_state_t *b, move_t *ml)
 	    (b->lastIrreversable == -1 ? 0 : b->lastIrreversable)));
 	mstrlcat(bstring, tmp, sizeof bstring);
 
-	ret = snprintf(tmp, sizeof tmp, "%d %s %s %d %d %d %d %d %d %d %d %s "
+	int ret = snprintf(tmp, sizeof tmp, "%d %s %s %d %d %d %d %d %d %d %d %s "
 	    "(%s) %s %d\n",
 	    (b->gameNum + 1),
 	    garray[b->gameNum].white_name,
@@ -1027,7 +1024,7 @@ style12(game_state_t *b, move_t *ml)
 	    : "none"),
 
 	    (garray[b->gameNum].numHalfMoves
-	    ? tenth_str(ml[garray[b->gameNum].numHalfMoves - 1].tookTime, 0)
+	    ? tenth_str(ml[garray[b->gameNum].numHalfMoves - 1].tookTime, false)
 	    : "0:00"),
 
 	    (garray[b->gameNum].numHalfMoves
@@ -1036,7 +1033,7 @@ style12(game_state_t *b, move_t *ml)
 
 	    (orient == WHITE ? 0 : 1));
 
-	too_long = (ret < 0 || (size_t)ret >= sizeof tmp);
+	bool too_long = (ret < 0 || (size_t)ret >= sizeof tmp);
 
 	if (too_long) {
 		fprintf(stderr, "FICS: %s: warning: snprintf truncated\n",

@@ -26,7 +26,7 @@
 
 #include <stdlib.h>
 #include <string.h>
-
+#include <stdbool.h>
 #include <err.h>
 
 #include "common.h"
@@ -67,14 +67,14 @@ multicol_store(multicol *m, char *str)
 PUBLIC int
 multicol_store_sorted(multicol *m, char *str)
 {	// Use this instead of multicol_store() to print a list sorted.
-	int found = 0;
+	bool found = false;
 
 	if (m == NULL || str == NULL || m->num >= m->arraySize)
 		return -1;
 
 	for (int i = m->num; i > 0 && !found; i--) {
 		if (strcasecmp(str, m->strArray[i - 1]) >= 0) {
-			found = 1;
+			found = true;
 			m->strArray[i] = xstrdup(str);
 		} else {
 			m->strArray[i] = m->strArray[i - 1];

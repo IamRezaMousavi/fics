@@ -36,6 +36,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <err.h>
 
 #if __linux__
@@ -69,11 +70,11 @@ game_ended(int g, int winner, int why)
 	char	 outstr[200] = { '\0' };
 	char	 tmp[200] = { '\0' };
 	char	 winSymbol[10] = { '\0' };
-	int	 beingplayed = 0; // i.e. it wasn't loaded for adjudication
+	bool	 beingplayed = false; // i.e. it wasn't loaded for adjudication
 	int	 gl = garray[g].link;
-	int	 isDraw = 0;
+	bool	 isDraw = false;
 	int	 p;
-	int	 rate_change = 0;
+	bool	 rate_change = false;
 	int	 whiteResult;
 
 	beingplayed = (parray[garray[g].black].game == g);
@@ -104,58 +105,58 @@ game_ended(int g, int winner, int why)
 		    NameOfLoser,
 		    winSymbol);
 		mstrlcpy(EndSymbol, "Mat", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		break;
 	case END_RESIGN:
 		msnprintf(tmp, sizeof tmp, "%s resigns} %s\n",
 		    NameOfLoser,
 		    winSymbol);
 		mstrlcpy(EndSymbol, "Res", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		break;
 	case END_FLAG:
 		msnprintf(tmp, sizeof tmp, "%s forfeits on time} %s\n",
 		    NameOfLoser,
 		    winSymbol);
 		mstrlcpy(EndSymbol, "Fla", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		break;
 	case END_STALEMATE:
 		mstrlcpy(tmp, "Game drawn by stalemate} 1/2-1/2\n", sizeof tmp);
-		isDraw = 1;
+		isDraw = true;
 		mstrlcpy(EndSymbol, "Sta", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		whiteResult = RESULT_DRAW;
 		break;
 	case END_AGREEDDRAW:
 		mstrlcpy(tmp, "Game drawn by mutual agreement} 1/2-1/2\n",
 		    sizeof tmp);
-		isDraw = 1;
+		isDraw = true;
 		mstrlcpy(EndSymbol, "Agr", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		whiteResult = RESULT_DRAW;
 		break;
 	case END_BOTHFLAG:
 		mstrlcpy(tmp, "Game drawn because both players ran out of "
 		    "time} 1/2-1/2\n", sizeof tmp);
-		isDraw = 1;
+		isDraw = true;
 		mstrlcpy(EndSymbol, "Fla", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		whiteResult = RESULT_DRAW;
 		break;
 	case END_REPETITION:
 		mstrlcpy(tmp, "Game drawn by repetition} 1/2-1/2\n", sizeof tmp);
-		isDraw = 1;
+		isDraw = true;
 		mstrlcpy(EndSymbol, "Rep", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		whiteResult = RESULT_DRAW;
 		break;
 	case END_50MOVERULE:
 		mstrlcpy(tmp, "Game drawn by the 50 move rule} 1/2-1/2\n",
 		    sizeof tmp);
-		isDraw = 1;
+		isDraw = true;
 		mstrlcpy(EndSymbol, "50", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		whiteResult = RESULT_DRAW;
 		break;
 	case END_ADJOURN:
@@ -209,9 +210,9 @@ game_ended(int g, int winner, int why)
 		// Draw by insufficient material (e.g., lone K vs. lone K)
 		mstrlcpy(tmp, "Neither player has mating material} 1/2-1/2\n",
 		    sizeof tmp);
-		isDraw = 1;
+		isDraw = true;
 		mstrlcpy(EndSymbol, "NM ", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		whiteResult = RESULT_DRAW;
 		break;
 	case END_FLAGNOMATERIAL:
@@ -219,23 +220,23 @@ game_ended(int g, int winner, int why)
 		    "material to mate} 1/2-1/2\n",
 		    NameOfLoser,
 		    NameOfWinner);
-		isDraw = 1;
+		isDraw = true;
 		mstrlcpy(EndSymbol, "TM ", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		whiteResult = RESULT_DRAW;
 		break;
 	case END_ADJWIN:
 		msnprintf(tmp, sizeof tmp, "%s wins by adjudication} %s\n",
 		    NameOfWinner, winSymbol);
 		mstrlcpy(EndSymbol, "Adj", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		break;
 	case END_ADJDRAW:
 		mstrlcpy(tmp, "Game drawn by adjudication} 1/2-1/2\n",
 		    sizeof tmp);
-		isDraw = 1;
+		isDraw = true;
 		mstrlcpy(EndSymbol, "Adj", sizeof EndSymbol);
-		rate_change = 1;
+		rate_change = true;
 		whiteResult = RESULT_DRAW;
 		break;
 	case END_ADJABORT:
@@ -1016,7 +1017,7 @@ com_unpause(int p, param_list param)
 PUBLIC int
 com_abort(int p, param_list param)
 {
-	int courtesyOK = 1;
+	bool courtesyOK = true;
 	int p1, g, myColor, yourColor, myGTime, yourGTime;
 
 	ASSERT(param[0].type == TYPE_NULL);
@@ -1080,7 +1081,7 @@ com_abort(int p, param_list param)
 				 * Override courtesyabort; opponent
 				 * still has time. Check for lag.
 				 */
-				courtesyOK = 0;
+				courtesyOK = false;
 
 				if (garray[g].game_state.onMove != myColor &&
 				    garray[g].flag_pending != FLAG_CHECKING) {
@@ -1609,7 +1610,8 @@ com_simmatch(int p, param_list param)
 {
 	char	tmp[100] = { '\0' };
 	int	num;
-	int	p1, g, adjourned;
+	int	p1, g;
+	bool adjourned;
 
 	if (parray[p].game >= 0 && garray[parray[p].game].status ==
 	    GAME_EXAMINE) {
@@ -1659,10 +1661,10 @@ com_simmatch(int p, param_list param)
 		unobserveAll(p1);
 
 		g = game_new();
-		adjourned = 0;
+		adjourned = false;
 
 		if (game_read(g, p, p1) >= 0)
-			adjourned = 1;
+			adjourned = true;
 
 		if (!adjourned) { // no adjourned game - so begin a new game.
 			game_remove(g);
@@ -1774,7 +1776,7 @@ com_simmatch(int p, param_list param)
 
 	if (adjourned) {
 		if (!(garray[g].type == TYPE_UNTIMED))
-			adjourned = 0;
+			adjourned = false;
 	}
 
 	game_remove(g);

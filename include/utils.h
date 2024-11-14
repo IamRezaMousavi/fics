@@ -30,6 +30,7 @@
 #ifndef _UTILS_H
 #define _UTILS_H
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <time.h>
 
@@ -68,7 +69,7 @@ extern char		*file_bplayer(char *);
 extern char		*file_wplayer(char *);
 extern char		*fix_time(char *);
 extern char		*getword(char *);
-extern char		*hms(int, int, int, int);
+extern char		*hms(int, bool, bool, bool);
 extern char		*hms_desc(int);
 extern char		*nextword(char *);
 extern char		*ratstr(int);
@@ -76,7 +77,7 @@ extern char		*ratstrii(int, int);
 extern char		*stolower(char *);
 extern char		*strgtime(time_t *);
 extern char		*strltime(time_t *);
-extern char		*tenth_str(unsigned int, int);
+extern char		*tenth_str(unsigned int, bool);
 extern char		*xstrdup(const char *);
 extern int		 alphastring(char *);
 extern int		 available_space(void);
