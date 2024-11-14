@@ -35,6 +35,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include <err.h>
 
 #if __linux__
@@ -81,13 +82,13 @@ create_new_match(int white_player, int black_player, int wt, int winc, int bt,
 {
 	char	outStr[1024] = { '\0' };
 	int	g, p;
-	int	reverse = 0;
+	bool	reverse = false;
 
 	if ((g = game_new()) < 0)
 		return COM_FAILED;
 
 	if (white == 0) {
-		reverse = 1;
+		reverse = true;
 	} else if (white == -1) {
 		if (wt == bt && winc == binc) {
 			if (parray[white_player].lastColor ==
@@ -100,11 +101,11 @@ create_new_match(int white_player, int black_player, int wt, int winc, int bt,
 					 parray[black_player].num_black);
 
 				if (diff1 > diff2)
-					reverse = 1;
+					reverse = true;
 			} else if (parray[white_player].lastColor == WHITE)
-				reverse = 1;
+				reverse = true;
 		} else
-			reverse = 1;	// Challenger is always white in
+			reverse = true;	// Challenger is always white in
 					// unbalanced match
 	}
 
@@ -237,7 +238,6 @@ create_new_match(int white_player, int black_player, int wt, int winc, int bt,
 	pprintf(black_player, "%s", outStr);
 
 	for (p = 0; p < p_num; p++) {
-		int	gnw, gnb;
 
 		if ((p == white_player) || (p == black_player))
 			continue;
@@ -246,8 +246,8 @@ create_new_match(int white_player, int black_player, int wt, int winc, int bt,
 		if (parray[p].i_game)
 			pprintf_prompt(p, "%s", outStr);
 
-		gnw = in_list(p, L_GNOTIFY, parray[white_player].login);
-		gnb = in_list(p, L_GNOTIFY, parray[black_player].login);
+		bool gnw = in_list(p, L_GNOTIFY, parray[white_player].login);
+		bool gnb = in_list(p, L_GNOTIFY, parray[black_player].login);
 
 		if (gnw || gnb) {
 			pprintf(p, "Game notification: ");
@@ -300,8 +300,10 @@ accept_match(int p, int p1)
 	char	 board[50] = { '\0' };
 	char	 category[50] = { '\0' };
 	char	 tmp[100] = { '\0' };
-	int	 bh = 0, pp, pp1;
-	int	 g, adjourned, foo, which;
+	bool	 isBughouse = false;
+	bool     adjourned;
+	int pp, pp1;
+	int	 g, foo, which;
 	int	 wt, winc, bt, binc, rated, white;
 	pending	*pend;
 
@@ -370,7 +372,7 @@ accept_match(int p, int p1)
 
 	if (game_isblitz(wt, winc, bt, binc, category, board) == TYPE_WILD &&
 	    strcmp(board, "bughouse") == 0) {
-		bh = 1;
+		isBughouse = true;
 
 		if ((pp = parray[p].partner) >= 0 &&
 		    (pp1 = parray[p1].partner) >= 0) {
@@ -437,14 +439,14 @@ accept_match(int p, int p1)
 	}
 
 	g = game_new();
-	adjourned = 0;
+	adjourned = false;
 
 	if (game_read(g, p, p1) >= 0) {
-		adjourned = 1;
+		adjourned = true;
 	} else if (game_read(g, p1, p) >= 0) {
 		int	swap;
 
-		adjourned = 1;
+		adjourned = true;
 		swap = p;
 		p = p1;
 		p1 = swap;
@@ -459,7 +461,7 @@ accept_match(int p, int p1)
 			    "creating the new match.\n");
 			pprintf(p, "%s", tmp);
 			pprintf_prompt(p1, "%s", tmp);
-		} else if (bh) {
+		} else if (isBughouse) {
 			white = (parray[p].side == WHITE ? 0 : 1);
 
 			if (create_new_match(pp, pp1, wt, winc, bt, binc, rated,
@@ -620,8 +622,9 @@ com_match(int p, param_list param)
 	char		*adjustr[] = { "", " (adjourned)" };
 	char		*colorstr[] = { "", "[black] ", "[white] " };
 	char		*val;
-	int		 adjourned;	// adjourned game?
-	int		 bh = 0, pp, pp1;
+	bool		 adjourned;	// adjourned game?
+	bool		 isBughouse = false;
+	int      pp, pp1;
 	int		 binc = -1;	// black increment
 	int		 bt = -1;	// black start time
 	int		 confused = 0;
@@ -875,7 +878,7 @@ com_match(int p, param_list param)
 		}
 
 		if (type == TYPE_WILD && strcmp(board, "bughouse") == 0) {
-			bh	= 1;
+			isBughouse	= true;
 			pp	= parray[p].partner;
 			pp1	= parray[p1].partner;
 
@@ -1052,7 +1055,7 @@ com_match(int p, param_list param)
 	if (parray[p1].bell == 1)
 		pprintf_noformat(p1, "\007");
 
-	if (bh) {
+	if (isBughouse) {
 		struct print_bh_context ctx = {
 			.pp = pp,
 			.pp1 = pp1,

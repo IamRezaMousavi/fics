@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include <time.h>
 
 #if __linux__
@@ -63,7 +64,7 @@ ShutDown(void)
 PUBLIC void
 ShutHeartBeat(void)
 {
-	int	crossing = 0;
+	bool	crossing = false;
 	int	p1;
 	int	timeLeft;
 	time_t	t = time(NULL);
@@ -76,21 +77,21 @@ ShutHeartBeat(void)
 	timeLeft = shutdownTime - (t - shutdownStartTime);
 
 	if (lastTimeLeft > 3600 && timeLeft <= 3600)
-		crossing = 1;
+		crossing = true;
 	if (lastTimeLeft > 2400 && timeLeft <= 2400)
-		crossing = 1;
+		crossing = true;
 	if (lastTimeLeft > 1200 && timeLeft <= 1200)
-		crossing = 1;
+		crossing = true;
 	if (lastTimeLeft > 600 && timeLeft <= 600)
-		crossing = 1;
+		crossing = true;
 	if (lastTimeLeft > 300 && timeLeft <= 300)
-		crossing = 1;
+		crossing = true;
 	if (lastTimeLeft > 120 && timeLeft <= 120)
-		crossing = 1;
+		crossing = true;
 	if (lastTimeLeft > 60 && timeLeft <= 60)
-		crossing = 1;
+		crossing = true;
 	if (lastTimeLeft > 10 && timeLeft <= 10)
-		crossing = 1;
+		crossing = true;
 
 	if (crossing) {
 		fprintf(stderr, "FICS:   **** Server going down in %d minutes "
@@ -130,14 +131,14 @@ ShutHeartBeat(void)
  * Tells a user about a shutdown. Returns 1 if there is to be one, and
  * 0 otherwise. (For 'whenshut' command.)
  */
-PUBLIC int
+PUBLIC bool
 check_and_print_shutdown(int p)
 {
 	int	timeLeft;
 	time_t	t = time(NULL);
 
 	if (!shutdownTime)
-		return 0;     // no shutdown
+		return false;     // no shutdown
 
 	timeLeft = shutdownTime - (t - shutdownStartTime);
 
@@ -150,7 +151,7 @@ check_and_print_shutdown(int p)
 		pprintf(p, "\n    **** We are going down because: %s. ****\n",
 		    reason);
 	}
-	return 1;
+	return true;
 }
 
 
@@ -308,7 +309,7 @@ server_shutdown(int secs, char *why)
 PUBLIC int
 com_whenshut(int p, param_list param)
 {
-	if (check_and_print_shutdown(p) == 0)
+	if (!check_and_print_shutdown(p))
 		pprintf(p, "No shutdown currently in progress\n");
 	return COM_OK;
 }

@@ -257,7 +257,7 @@ get_parameters(int command, char *parameters, param_list params)
 {
 	char		c;
 	int		i, parlen;
-	int		paramLower;
+	bool		paramLower;
 	static char	punc[2];
 
 	punc[1] = '\0'; // Holds punc parameters
@@ -271,10 +271,10 @@ get_parameters(int command, char *parameters, param_list params)
 		c = command_list[command].param_string[i];
 
 		if (isupper(c)) {
-			paramLower = 0;
+			paramLower = false;
 			c = tolower(c);
 		} else {
-			paramLower = 1;
+			paramLower = true;
 		}
 
 		switch (c) {
@@ -731,7 +731,7 @@ rscan_news(FILE *fp, int p, int lc)
 }
 
 PRIVATE void
-check_news(int p, int admin)
+check_news(int p, bool admin)
 {
 	FILE		*fp;
 	char		 count[10];
@@ -831,7 +831,6 @@ PRIVATE int
 process_password(int p, char *password)
 {
 	char		 salt[FICS_SALT_SIZE];
-	int		 dummy;    // to hold a return value
 	int		 fd;
 	int		 messnum;
 	int		 p1;
@@ -921,11 +920,11 @@ process_password(int p, char *password)
 	 */
 
 	if (parray[p].registered) {
-		check_news(p, 0);
+		check_news(p, false);
 
 		if (parray[p].adminLevel > 0) {
 			pprintf(p, "\n");
-			check_news(p, 1);
+			check_news(p, true);
 		}
 	}
 
@@ -954,11 +953,7 @@ process_password(int p, char *password)
 
 	parray[p].logon_time = parray[p].last_command_time = time(NULL);
 
-	dummy = check_and_print_shutdown(p);	// Tells the user if we are
-						// going to shutdown
-
-	// XXX: unused
-	(void) dummy;
+	check_and_print_shutdown(p);	// Tells the user if we are going to shutdown
 
 	pprintf(p, "\n%s", parray[p].prompt);
 	return 0;

@@ -278,7 +278,7 @@ pprintf(int p, const char *format, ...)
 	retval = vsnprintf(tmp, sizeof tmp, format, ap);
 	va_end(ap);
 
-	net_send_string(parray[p].socket, tmp, 1);
+	net_send_string(parray[p].socket, tmp, true);
 	return retval;
 }
 
@@ -308,7 +308,7 @@ pprintf_highlight(int p, char *format, ...)
 	retval = vsnprintf(tmp, sizeof tmp, format, ap);
 	va_end(ap);
 
-	net_send_string(parray[p].socket, tmp, 1);
+	net_send_string(parray[p].socket, tmp, true);
 
 	if (parray[p].highlight)
 		pprintf(p, "\033[0m");
@@ -364,8 +364,8 @@ pprintf_prompt(int p, char *format, ...)
 	retval = vsnprintf(tmp, sizeof tmp, format, ap);
 	va_end(ap);
 
-	net_send_string(parray[p].socket, tmp, 1);
-	net_send_string(parray[p].socket, parray[p].prompt, 1);
+	net_send_string(parray[p].socket, tmp, true);
+	net_send_string(parray[p].socket, parray[p].prompt, true);
 	return retval;
 }
 
@@ -380,7 +380,7 @@ pprintf_noformat(int p, char *format, ...)
 	retval = vsnprintf(tmp, sizeof tmp, format, ap);
 	va_end(ap);
 
-	net_send_string(parray[p].socket, tmp, 0);
+	net_send_string(parray[p].socket, tmp, false);
 	return retval;
 }
 
@@ -402,7 +402,7 @@ psend_raw_file(int p, char *dir, char *file)
 
 	while ((num = fread(tmp, sizeof(char), MAX_LINE_SIZE - 1, fp)) > 0) {
 		tmp[num] = '\0';
-		net_send_string(parray[p].socket, tmp, 1);
+		net_send_string(parray[p].socket, tmp, true);
 	}
 
 	fclose(fp);
@@ -434,7 +434,7 @@ psend_file(int p, char *dir, char *file)
 		fgets(tmp, MAX_LINE_SIZE - 1, fp);
 
 		if (!feof(fp))
-			net_send_string(parray[p].socket, tmp, 1);
+			net_send_string(parray[p].socket, tmp, true);
 	}
 
 	if (!feof(fp)) {
@@ -475,7 +475,7 @@ psend_logoutfile(int p, char *dir, char *file)
 		fgets(tmp, MAX_LINE_SIZE - 1, fp);
 
 		if (!feof(fp))
-			net_send_string(parray[p].socket, tmp, 1);
+			net_send_string(parray[p].socket, tmp, true);
 	}
 
 	fclose(fp);
@@ -505,7 +505,7 @@ pmore_file(int p)
 		fgets(tmp, MAX_LINE_SIZE, fp);
 
 		if (!feof(fp))
-			net_send_string(parray[p].socket, tmp, 1);
+			net_send_string(parray[p].socket, tmp, true);
 	}
 
 	if (!feof(fp)) {
@@ -541,7 +541,7 @@ psend_command(int p, char *command, char *input)
 		while (!feof(fp)) {
 			num = fread(tmp, sizeof(char), MAX_LINE_SIZE - 1, fp);
 			tmp[num] = '\0';
-			net_send_string(parray[p].socket, tmp, 1);
+			net_send_string(parray[p].socket, tmp, true);
 		}
 	}
 
@@ -655,7 +655,7 @@ hms_desc(int t)
 }
 
 PUBLIC char *
-hms(int t, int showhour, int showseconds, int spaces)
+hms(int t, bool showhour, bool showseconds, bool spaces)
 {
 	char		tmp[10];
 	int		h, m, s;
@@ -767,9 +767,9 @@ untenths(unsigned int tenths)
 }
 
 PUBLIC char *
-tenth_str(unsigned int t, int spaces)
+tenth_str(unsigned int t, bool spaces)
 {
-	return hms((t + 5) / 10, 0, 1, spaces);
+	return hms((t + 5) / 10, false, true, spaces);
 }
 
 /*

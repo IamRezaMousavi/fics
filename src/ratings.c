@@ -35,6 +35,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include <time.h>
 #include <err.h>
 #include <errno.h>
@@ -864,7 +865,7 @@ rating_update(int g)
 {
 	double		 wSigma, bSigma;
 	int		 gtime;
-	int		 inprogress = (g == parray[garray[g].black].game);
+	bool		 inprogress = (g == parray[garray[g].black].game);
 	int		 wDelta, bDelta;
 	int		 wRes, bRes;
 	statistics	*b_stats;
@@ -1475,7 +1476,7 @@ UpdateRank(int type, char *addName, statistics *sNew, char *delName)
 
 		if (addName != NULL &&
 		    CompareStats(addName, sNew, login, &sCur) > 0) {
-			int computer = in_list(-1, L_COMPUTER, addName);
+			bool computer = in_list(-1, L_COMPUTER, addName);
 
 			fprintf(fptemp, "%s %d %d %d\n", addName, sNew->rating,
 			    sNew->num, computer);
@@ -1582,11 +1583,11 @@ ShowRankEntry(int p, FILE *fp, int count, int comp, char *target,
 {
 	char	login[MAX_LOGIN_NAME] = { '\0' };
 	char	newLine[MAX_RANK_LINE] = { '\0' };
-	int	rating, findable, nGames, is_comp;
+	int	rating, nGames, is_comp;
 
 	// XXX
 	rating		= 0;
-	findable	= (count > 0 && !feof(fp));
+	bool findable	= (count > 0 && !feof(fp));
 	nGames		= 0;
 	is_comp		= 0;
 
@@ -1595,7 +1596,7 @@ ShowRankEntry(int p, FILE *fp, int count, int comp, char *target,
 			fgets(newLine, MAX_RANK_LINE - 1, fp);
 
 			if (feof(fp)) {
-				findable = 0;
+				findable = false;
 			} else if (newLine[0] != '\0') {
 				sscanf(newLine, "%s %d %d %d", login, &rating,
 				    &nGames, &is_comp);

@@ -29,6 +29,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 #if __linux__
 #include <bsd/string.h>
@@ -780,7 +781,8 @@ PRIVATE int
 move_calculate(game_state_t *gs, move_t *mt, int promote)
 {
 	game_state_t	fakeMove;
-	int		ret, too_long;
+	int		ret;
+	bool too_long;
 
 	mt->pieceCaptured	= gs->board[mt->toFile][mt->toRank];
 	mt->enPassant		= 0;	// Don't know yet,

@@ -40,6 +40,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <time.h>
 #include <unistd.h>
 #include <err.h>
@@ -149,7 +150,7 @@ com_news(int p, param_list param)
 	char		 count[10] = { '\0' };
 	char		 filename[MAX_FILENAME_SIZE] = { '\0' };
 	char		 junk[MAX_LINE_SIZE] = { '\0' };
-	int		 found = 0;
+	bool		 found = false;
 	long int	 lval;
 	time_t		 crtime;
 
@@ -213,7 +214,7 @@ com_news(int p, param_list param)
 			crtime = lval;
 
 			if (!strcmp(count, param[0].val.word)) {
-				found = 1;
+				found = true;
 
 				junkp = nextword(junkp);
 				junkp = nextword(junkp);
@@ -872,7 +873,6 @@ who_verbose(int p, int num, int plist[])
 	char	 playerLine[255] = { '\0' };
 	char	 tmp[255] = { '\0' };
 	int	 p1;
-	int	 ret, too_long;
 
 	pprintf(p, " +---------------------------------------------------------------+\n");
 	pprintf(p, " |      User              Standard    Blitz        On for   Idle |\n");
@@ -915,9 +915,9 @@ who_verbose(int p, int num, int plist[])
 			psprintf_highlight(p, tmp + strlen(tmp),
 			    sizeof tmp - strlen(tmp), "%-17s", p1WithAttrs);
 		} else {
-			ret = snprintf(tmp, sizeof tmp, " %-17s", p1WithAttrs);
+			int ret = snprintf(tmp, sizeof tmp, " %-17s", p1WithAttrs);
 
-			too_long = (ret < 0 || (size_t)ret >= sizeof tmp);
+			bool too_long = (ret < 0 || (size_t)ret >= sizeof tmp);
 
 			if (too_long) {
 				fprintf(stderr, "FICS: %s: warning: "
@@ -931,12 +931,12 @@ who_verbose(int p, int num, int plist[])
 		    parray[p1].registered),
 		    ratstrii(parray[p1].b_stats.rating,
 		    parray[p1].registered),
-		    hms(player_ontime(p1), 0, 0, 0));
+		    hms(player_ontime(p1), false, false, false));
 		strlcat(playerLine, tmp, sizeof playerLine);
 
 		if (player_idle(p1) >= 60) {
 			snprintf(tmp, sizeof tmp, "%5s   |\n",
-			    hms(player_idle(p1), 0, 0, 0));
+			    hms(player_idle(p1), false, false, false));
 		} else {
 			strlcpy(tmp, "        |\n", sizeof tmp);
 		}
@@ -994,7 +994,7 @@ who_winloss(int p, int num, int plist[])
 
 		if (player_idle(p1) >= 60) {
 			snprintf(tmp, sizeof tmp, "%5s\n", hms(player_idle(p1),
-			    0, 0, 0));
+			    false, false, false));
 		} else {
 			strlcpy(tmp, "     \n", sizeof tmp);
 		}

@@ -1189,9 +1189,7 @@ ReadOneV1Move(FILE *fp, move_t *m)
 	}
 
 	if (m->algString[0] != 'O') {
-		int ret, too_long;
-
-		ret = snprintf(m->moveString, sizeof m->moveString,
+		int ret = snprintf(m->moveString, sizeof m->moveString,
 		    "%c/%c%d-%c%d",
 		    PieceChar,
 		    ('a' + m->fromFile),
@@ -1199,7 +1197,7 @@ ReadOneV1Move(FILE *fp, move_t *m)
 		    ('a' + m->toFile),
 		    (m->toRank + 1));
 
-		too_long = (ret < 0 || (size_t)ret >= sizeof m->moveString);
+		bool too_long = (ret < 0 || (size_t)ret >= sizeof m->moveString);
 
 		if (too_long) {
 			fprintf(stderr, "FICS: %s: warning: "
@@ -1669,7 +1667,7 @@ RemHist(char *who)
 }
 
 PRIVATE void
-write_g_out(int g, char *file, int maxlines, int isDraw, char *EndSymbol,
+write_g_out(int g, char *file, int maxlines, bool isDraw, char *EndSymbol,
     char *name, time_t *now)
 {
 	FILE	*fp;
@@ -1858,7 +1856,7 @@ addjournalitem(int p, char count2, char *WhiteName2, int WhiteRating2,
 	char	 result[100] = { '\0' };
 	char	 type[100] = { '\0' };
 	int	 WhiteRating, BlackRating;
-	int	 have_output = 0;
+	bool	 have_output = false;
 	int	 t, i;
 
 	mstrlcpy(fname2, fname, sizeof fname2);
@@ -1913,7 +1911,7 @@ addjournalitem(int p, char count2, char *WhiteName2, int WhiteRating2,
 				    eco2,
 				    ending2,
 				    result2);
-				have_output = 1;
+				have_output = true;
 			}
 
 			if (count != count2) {
@@ -2057,7 +2055,7 @@ pgames(int p, int p1, char *fname)
 }
 
 PUBLIC void
-game_write_complete(int g, int isDraw, char *EndSymbol)
+game_write_complete(int g, bool isDraw, char *EndSymbol)
 {
 	FILE	*fp;
 	char	 fname[MAX_FILENAME_SIZE] = { '\0' };

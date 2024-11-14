@@ -1240,7 +1240,7 @@ player_censored(int p, int p1)
 /*
  * Is p1 on p's notify list?
  */
-PUBLIC int
+PUBLIC bool
 player_notified(int p, int p1)
 {
 	if (!parray[p1].registered)
@@ -1501,13 +1501,12 @@ player_lastconnect(int p)
 	char		 ipstr[20];
 	char		 loginName[MAX_LOGIN_NAME];
 	int		 inout, registered;
-	int		 ret, too_long;
 	long int	 lval;
 	time_t		 last = 0;
 
-	ret = snprintf(fname, sizeof fname, "%s/player_data/%c/%s.%s",
+	int ret = snprintf(fname, sizeof fname, "%s/player_data/%c/%s.%s",
 	    stats_dir, parray[p].login[0], parray[p].login, STATS_LOGONS);
-	too_long = (ret < 0 || (size_t)ret >= sizeof fname);
+	bool too_long = (ret < 0 || (size_t)ret >= sizeof fname);
 
 	if (too_long) {
 		fprintf(stderr, "FICS: %s: warning: snprintf truncated\n",
@@ -1549,13 +1548,12 @@ player_lastdisconnect(int p)
 	char		 ipstr[20];
 	char		 loginName[MAX_LOGIN_NAME];
 	int		 inout, registered;
-	int		 ret, too_long;
 	long int	 lval;
 	time_t		 last = 0;
 
-	ret = snprintf(fname, sizeof fname, "%s/player_data/%c/%s.%s",
+	int ret = snprintf(fname, sizeof fname, "%s/player_data/%c/%s.%s",
 	    stats_dir, parray[p].login[0], parray[p].login, STATS_LOGONS);
-	too_long = (ret < 0 || (size_t)ret >= sizeof fname);
+	bool too_long = (ret < 0 || (size_t)ret >= sizeof fname);
 
 	if (too_long) {
 		fprintf(stderr, "FICS: %s: warning: snprintf truncated\n",
@@ -2351,11 +2349,9 @@ player_simul_over(int p, int g, int result)
 PRIVATE void
 GetMsgFile(int p, char *fName, const size_t size, const char *func)
 {
-	int ret, too_long;
-
-	ret = snprintf(fName, size, "%s/player_data/%c/%s.%s", stats_dir,
+	int ret = snprintf(fName, size, "%s/player_data/%c/%s.%s", stats_dir,
 	    parray[p].login[0], parray[p].login, STATS_MESSAGES);
-	too_long = (ret < 0 || (size_t)ret >= size);
+	bool too_long = (ret < 0 || (size_t)ret >= size);
 
 	if (too_long) {
 		fprintf(stderr, "FICS: %s: warning: snprintf truncated\n",
@@ -2615,7 +2611,7 @@ ClearMsgsBySender(int p, param_list param)
 }
 
 PRIVATE void
-ShowTextList(int p, textlist *Head, int ShowIndex)
+ShowTextList(int p, textlist *Head, bool ShowIndex)
 {
 	textlist *CurMsg;
 
@@ -2641,7 +2637,7 @@ player_show_messages(int p)
 		return -1;
 	} else {
 		pprintf(p, "Messages:\n");
-		ShowTextList(p, Head, 1);
+		ShowTextList(p, Head, true);
 		ClearTextList(Head);
 		return 0;
 	}
@@ -2671,7 +2667,7 @@ ShowMsgsBySender(int p, param_list param)
 			    parray[p1].name);
 		} else {
 			pprintf(p, "Messages to %s:\n", parray[p1].name);
-			ShowTextList(p, Head, 0);
+			ShowTextList(p, Head, false);
 			ClearTextList(Head);
 		}
 	}
@@ -2681,7 +2677,7 @@ ShowMsgsBySender(int p, param_list param)
 		    parray[p1].name);
 	} else {
 		pprintf(p, "Messages from %s:\n", parray[p1].name);
-		ShowTextList(p, Head, 1);
+		ShowTextList(p, Head, true);
 		ClearTextList(Head);
 	}
 
@@ -2697,7 +2693,7 @@ ShowMsgRange(int p, int start, int end)
 	textlist	*Head;
 
 	if ((n = LoadMsgRange(p, start, end, &Head)) > 0) {
-		ShowTextList(p, Head, 1);
+		ShowTextList(p, Head, true);
 		ClearTextList(Head);
 	}
 

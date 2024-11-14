@@ -7,6 +7,7 @@
 #define _LISTS_H
 
 #include <stdio.h>
+#include <stdbool.h>
 
 #include "command.h" /* param_list */
 
@@ -63,7 +64,7 @@ extern int	com_addlist(int, param_list);
 extern int	com_showlist(int, param_list);
 extern int	com_sublist(int, param_list);
 
-extern int	in_list(int, enum ListWhich, char *);
+extern bool	in_list(int, enum ListWhich, char *);
 extern int	list_add(int, enum ListWhich, char *);
 extern int	list_addsub(int, char *, char *, int);
 extern int	list_channels(int, int);
