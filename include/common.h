@@ -1,9 +1,4 @@
 /*
- * File: common.h
- * Copyright 1993, Richard V. Nash
- */
-
-/*
     fics - An internet chess server.
     Copyright (C) 1993  Richard V. Nash
 
