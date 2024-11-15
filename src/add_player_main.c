@@ -1,7 +1,3 @@
-/* fics_addplayer.c
- *
- */
-
 /*
     fics - An internet chess server.
     Copyright (C) 1994  Richard V. Nash

@@ -1,7 +1,3 @@
-/* rmalloc.h
- *
- */
-
 /*
     fics - An internet chess server.
     Copyright (C) 1993  Richard V. Nash

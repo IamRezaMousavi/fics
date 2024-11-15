@@ -1,9 +1,4 @@
 /*
- * Copyright (c) 1993 by Richard V. Nash
- *  All rights reserved world wide.
- */
-
-/*
     fics - An internet chess server.
     Copyright (C) 1993  Richard V. Nash
 
